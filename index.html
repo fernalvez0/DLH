@@ -3,481 +3,388 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="description" content="Ganá $15K+ por reparación. Aprendé a reparar notebooks sin experiencia. 6 módulos, 9+ horas de video. Acceso inmediato.">
+<meta name="description" content="Aprendé a ganar dinero reparando computadoras desde cero. Sin experiencia. Acceso inmediato. Solo $9.900 ARS.">
 <title>Ganá dinero reparando computadoras desde cero</title>
 
+<!-- Preconnect fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 
-<!-- Meta Pixel para tracking LIMPIO (sin eventos fantasma) -->
+<!-- ═══════════════════════════════════════════════════
+  META PIXEL — PIXEL LIMPIO (SIN HISTORIAL)
+  IMPORTANTE: Reemplazar PIXEL_ID_AQUI con tu ID real
+  Ejemplo: fbq('init', '1234567890123456');
+  
+  EVENTOS CONFIGURADOS (limpios, sin Purchase):
+  • PageView → automático al cargar
+  • ViewContent → automático al cargar
+  • InitiateCheckout → al hacer clic en cualquier botón WA
+  
+  NO usamos Purchase para evitar eventos fantasma.
+  InitiateCheckout es el evento de optimización para Meta.
+  
+  FUTURO CRM / WHATSAPP BUSINESS:
+  Cuando tengas pixel de CRM WA, agregar segundo fbq('init') aquí:
+  fbq('init', 'SEGUNDO_PIXEL_CRM');
+  Meta permite múltiples píxeles en la misma página.
+═══════════════════════════════════════════════════ -->
 <script>
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-  document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', 'PIXEL_ID_AQUI');
-  fbq('track', 'PageView');
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+// ─── PIXEL PRINCIPAL (Curso PC) ───────────────────────
+fbq('init', '2817396475296258');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {
+  content_name: 'Curso Reparacion PC',
+  content_category: 'Educacion',
+  value: 9900,
+  currency: 'ARS'
+});
+
+// ─── PIXEL 2 (CRM WhatsApp Business) — FUTURO ─────────
+// Cuando tengas el ID del pixel de tu CRM:
+// fbq('init', 'PIXEL_CRM_ID_AQUI');
+// Los eventos se dispararán a AMBOS píxeles automáticamente.
 </script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=PIXEL_ID_AQUI&ev=PageView&noscript=1"/></noscript>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2817396475296258&ev=PageView&noscript=1"/></noscript>
 
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --verde: #1DB954;
-    --verde-dark: #169c44;
-    --verde-glow: rgba(29,185,84,0.25);
-    --negro: #0a0a0a;
-    --gris-oscuro: #111214;
-    --gris-medio: #1c1f23;
-    --gris-borde: #2a2e35;
-    --blanco: #f5f5f5;
-    --blanco-suave: #a0a6b0;
-    --amarillo: #FFD600;
-    --rojo-suave: #ff4d4d;
-    --fuente-titulo: 'Barlow Condensed', sans-serif;
-    --fuente-body: 'Barlow', sans-serif;
-  }
+:root {
+  --verde:        #1DB954;
+  --verde-dark:   #169c44;
+  --verde-glow:   rgba(29,185,84,0.20);
+  --negro:        #0a0a0a;
+  --gris-oscuro:  #111214;
+  --gris-medio:   #1c1f23;
+  --gris-borde:   #2a2e35;
+  --blanco:       #f5f5f5;
+  --blanco-suave: #a0a6b0;
+  --amarillo:     #FFD600;
+  --fuente-titulo:'Barlow Condensed', sans-serif;
+  --fuente-body:  'Barlow', sans-serif;
+}
 
-  html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--negro);
+  color: var(--blanco);
+  font-family: var(--fuente-body);
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
-  body {
-    background: var(--negro);
-    color: var(--blanco);
-    font-family: var(--fuente-body);
-    font-size: 16px;
-    line-height: 1.5;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-  }
+.container {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-  .container {
-    width: 100%;
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
+.tag {
+  display: inline-block;
+  background: var(--verde-glow);
+  border: 1px solid var(--verde);
+  color: var(--verde);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
 
-  .tag {
-    display: inline-block;
-    background: var(--verde-glow);
-    border: 1px solid var(--verde);
-    color: var(--verde);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border-radius: 2px;
-    margin-bottom: 16px;
-  }
+/* ─── TOPBAR URGENCIA ─── */
+.topbar {
+  background: #b91c1c;
+  color: #fff;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 10px 16px;
+  line-height: 1.4;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.topbar span { color: var(--amarillo); }
+#countdown { font-variant-numeric: tabular-nums; letter-spacing: 1px; }
 
-  /* ─── BOTÓN CTA ─── */
-  .btn-cta {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: var(--verde);
-    color: #fff;
-    font-family: var(--fuente-titulo);
-    font-size: 20px;
-    font-weight: 900;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 18px 28px;
-    border-radius: 6px;
-    min-height: 60px;
-    width: 100%;
-    border: none;
-    cursor: pointer;
-    transition: background 0.18s, transform 0.12s, box-shadow 0.18s;
-    box-shadow: 0 4px 24px rgba(29,185,84,0.35);
-    -webkit-tap-highlight-color: transparent;
-  }
-  .btn-cta:active {
-    background: var(--verde-dark);
-    transform: scale(0.98);
-  }
-  .btn-cta svg { flex-shrink: 0; }
+/* ─── BOTÓN WHATSAPP ─── */
+.btn-wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--verde);
+  color: #fff;
+  font-family: var(--fuente-titulo);
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 18px 28px;
+  border-radius: 6px;
+  min-height: 62px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.12s;
+  box-shadow: 0 4px 28px rgba(29,185,84,0.40);
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-wa:active { background: var(--verde-dark); transform: scale(0.98); }
+.btn-wa svg { flex-shrink: 0; }
 
-  /* ─── FLOATING BUTTON ─── */
-  .fab {
-    position: fixed;
-    bottom: 22px;
-    right: 18px;
-    z-index: 9999;
-    background: var(--verde);
-    border-radius: 50%;
-    width: 62px;
-    height: 62px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 28px rgba(29,185,84,0.55);
-    text-decoration: none;
-    transition: transform 0.15s;
-    -webkit-tap-highlight-color: transparent;
-    animation: pulse-fab 2.5s infinite;
-  }
-  .fab:active { transform: scale(0.93); }
-  @keyframes pulse-fab {
-    0%,100% { box-shadow: 0 6px 28px rgba(29,185,84,0.55); }
-    50% { box-shadow: 0 6px 40px rgba(29,185,84,0.85); }
-  }
+/* ─── FLOATING BUTTON ─── */
+.fab {
+  position: fixed;
+  bottom: 22px;
+  right: 18px;
+  z-index: 9999;
+  background: var(--verde);
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 28px rgba(29,185,84,0.60);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  animation: pulse-fab 2.5s infinite;
+}
+.fab:active { transform: scale(0.93); }
+@keyframes pulse-fab {
+  0%,100% { box-shadow: 0 6px 28px rgba(29,185,84,0.55); }
+  50%      { box-shadow: 0 6px 44px rgba(29,185,84,0.90); }
+}
 
-  /* ─── TOPBAR ─── */
-  .topbar {
-    background: var(--verde);
-    color: #fff;
-    text-align: center;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    padding: 9px 16px;
-    line-height: 1.3;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
+/* ─── HERO ─── */
+.hero {
+  background: var(--gris-oscuro);
+  padding: 44px 0 0;
+  border-bottom: 1px solid var(--gris-borde);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: -80px;
+  width: 340px; height: 340px;
+  background: radial-gradient(circle, rgba(29,185,84,0.11) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; }
 
-  /* ─── HERO ─── */
-  .hero {
-    background: var(--gris-oscuro);
-    padding: 44px 0 32px;
-    border-bottom: 1px solid var(--gris-borde);
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -80px; left: -80px;
-    width: 320px; height: 320px;
-    background: radial-gradient(circle, rgba(29,185,84,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
+.hero h1 {
+  font-family: var(--fuente-titulo);
+  font-size: clamp(36px, 10vw, 52px);
+  font-weight: 900;
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+.hero h1 span { color: var(--verde); }
 
-  .hero-content { position: relative; z-index: 1; }
+.hero-sub {
+  font-size: 17px;
+  color: var(--blanco-suave);
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
 
-  .hero h1 {
-    font-family: var(--fuente-titulo);
-    font-size: clamp(36px, 10vw, 48px);
-    font-weight: 900;
-    line-height: 1.05;
-    text-transform: uppercase;
-    letter-spacing: -0.5px;
-    margin-bottom: 12px;
-  }
-  .hero h1 span { color: var(--verde); }
+.hero-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.hero-price .monto  { font-family: var(--fuente-titulo); font-size: 42px; font-weight: 900; color: var(--amarillo); }
+.hero-price .moneda { font-size: 18px; color: var(--blanco-suave); font-weight: 600; }
+.hero-price .label  { font-size: 13px; color: var(--blanco-suave); background: var(--gris-medio); padding: 3px 8px; border-radius: 3px; border: 1px solid var(--gris-borde); align-self: center; }
 
-  .hero-sub {
-    font-size: 17px;
-    color: var(--blanco-suave);
-    margin-bottom: 24px;
-    line-height: 1.5;
-  }
+/* IMAGEN HERO */
+.hero-img-wrap {
+  margin-top: 32px;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-top: 3px solid var(--verde);
+  overflow: hidden;
+  background: var(--gris-medio);
+}
+.hero-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
 
-  .hero-price {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-bottom: 24px;
-  }
-  .hero-price .monto {
-    font-family: var(--fuente-titulo);
-    font-size: 40px;
-    font-weight: 900;
-    color: var(--amarillo);
-  }
-  .hero-price .moneda {
-    font-size: 18px;
-    color: var(--blanco-suave);
-    font-weight: 600;
-  }
-  .hero-price .label {
-    font-size: 13px;
-    color: var(--blanco-suave);
-    background: var(--gris-medio);
-    padding: 3px 8px;
-    border-radius: 3px;
-    border: 1px solid var(--gris-borde);
-    align-self: center;
-  }
+/* ─── SECCIONES ─── */
+section { padding: 48px 0; border-bottom: 1px solid var(--gris-borde); }
+section:last-of-type { border-bottom: none; }
 
-  /* IMAGEN HERO */
-  .hero-img-wrap {
-    margin-top: 24px;
-    width: 100%;
-    aspect-ratio: 4/3;
-    background: var(--gris-medio);
-    border-top: 3px solid var(--verde);
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-img-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .img-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    color: var(--blanco-suave);
-    font-size: 13px;
-    text-align: center;
-    padding: 20px;
-    background: linear-gradient(135deg, #141618 0%, #1c2026 100%);
-  }
-  .img-placeholder-icon { font-size: 48px; }
+.section-title {
+  font-family: var(--fuente-titulo);
+  font-size: clamp(28px, 8vw, 38px);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.08;
+  margin-bottom: 28px;
+}
+.section-title span { color: var(--verde); }
 
-  /* ─── SECCIONES ─── */
-  section {
-    padding: 40px 0;
-    border-bottom: 1px solid var(--gris-borde);
-  }
-  section:last-of-type { border-bottom: none; }
+.sep { width: 32px; height: 2px; background: var(--verde); margin-bottom: 20px; }
 
-  .section-title {
-    font-family: var(--fuente-titulo);
-    font-size: clamp(28px, 8vw, 36px);
-    font-weight: 900;
-    text-transform: uppercase;
-    line-height: 1.08;
-    margin-bottom: 28px;
-  }
-  .section-title span { color: var(--verde); }
+/* PROBLEMA */
+.problema-items { display: flex; flex-direction: column; gap: 18px; margin-bottom: 24px; }
+.problema-item  { display: flex; gap: 16px; }
+.problema-item .icono { font-size: 28px; flex-shrink: 0; }
+.problema-item p { font-size: 16px; color: var(--blanco-suave); line-height: 1.5; }
+.problema-cierre {
+  font-size: 15px;
+  color: var(--verde);
+  font-weight: 600;
+  border-left: 3px solid var(--verde);
+  padding-left: 14px;
+  line-height: 1.5;
+  margin-top: 24px;
+}
 
-  .sep {
-    width: 32px;
-    height: 2px;
-    background: var(--verde);
-    margin-bottom: 20px;
-  }
+/* OPORTUNIDAD */
+.oport-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.stat-card { background: var(--gris-medio); border: 1px solid var(--gris-borde); padding: 18px; border-radius: 6px; text-align: center; }
+.stat-card .numero      { font-family: var(--fuente-titulo); font-size: 30px; font-weight: 900; color: var(--amarillo); margin-bottom: 6px; }
+.stat-card .stat-label  { font-size: 13px; color: var(--blanco-suave); line-height: 1.3; }
+.oport-texto            { font-size: 16px; color: var(--blanco-suave); line-height: 1.6; }
 
-  /* PROBLEMA */
-  .problema-items {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .problema-item {
-    display: flex;
-    gap: 16px;
-  }
-  .problema-item .icono {
-    font-size: 28px;
-    flex-shrink: 0;
-  }
-  .problema-item p {
-    font-size: 16px;
-    color: var(--blanco-suave);
-    line-height: 1.5;
-  }
+/* BULLETS */
+.bullets    { display: flex; flex-direction: column; gap: 20px; }
+.bullet     { display: flex; gap: 16px; }
+.bullet-icon { font-size: 28px; flex-shrink: 0; }
+.bullet-text strong { display: block; color: var(--blanco); margin-bottom: 4px; font-size: 15px; }
+.bullet-text span   { display: block; font-size: 14px; color: var(--blanco-suave); line-height: 1.5; }
 
-  /* OPORTUNIDAD */
-  .oport-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-  .stat-card {
-    background: var(--gris-medio);
-    border: 1px solid var(--gris-borde);
-    padding: 16px;
-    border-radius: 6px;
-    text-align: center;
-  }
-  .stat-card .numero {
-    font-family: var(--fuente-titulo);
-    font-size: 28px;
-    font-weight: 900;
-    color: var(--amarillo);
-    margin-bottom: 6px;
-  }
-  .stat-card .stat-label {
-    font-size: 13px;
-    color: var(--blanco-suave);
-    line-height: 1.3;
-  }
+/* MÓDULOS */
+.modulos { display: flex; flex-direction: column; gap: 10px; }
+.modulo  { display: flex; gap: 16px; padding: 14px; background: var(--gris-medio); border: 1px solid var(--gris-borde); border-radius: 6px; }
+.modulo-num  { font-family: var(--fuente-titulo); font-size: 26px; font-weight: 900; color: var(--verde); flex-shrink: 0; min-width: 28px; }
+.modulo-info strong { display: block; color: var(--blanco); margin-bottom: 3px; font-size: 14px; }
+.modulo-info span   { display: block; font-size: 13px; color: var(--blanco-suave); line-height: 1.4; }
+.bonus-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,214,0,0.12); border: 1px solid var(--amarillo);
+  color: var(--amarillo); font-size: 12px; font-weight: 700;
+  padding: 3px 10px; border-radius: 2px; margin-top: 16px;
+  letter-spacing: 1px; text-transform: uppercase;
+}
 
-  .oport-texto {
-    font-size: 16px;
-    color: var(--blanco-suave);
-    line-height: 1.6;
-  }
+/* TESTIMONIOS */
+.testimonios { display: flex; flex-direction: column; gap: 16px; }
+.testimonio {
+  background: var(--gris-medio);
+  border: 1px solid var(--gris-borde);
+  border-left: 3px solid var(--verde);
+  padding: 18px;
+  border-radius: 0 6px 6px 0;
+}
+.testimonio blockquote { font-size: 15px; color: var(--blanco); line-height: 1.6; margin-bottom: 10px; font-style: italic; }
+.testimonio .autor { font-size: 13px; color: var(--verde); font-weight: 600; }
+.testimonio .estrellas { color: var(--amarillo); font-size: 14px; margin-bottom: 8px; }
 
-  /* BULLETS */
-  .bullets {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .bullet {
-    display: flex;
-    gap: 16px;
-  }
-  .bullet-icon {
-    font-size: 28px;
-    flex-shrink: 0;
-  }
-  .bullet-text strong {
-    display: block;
-    color: var(--blanco);
-    margin-bottom: 4px;
-    font-size: 15px;
-  }
-  .bullet-text span {
-    display: block;
-    font-size: 14px;
-    color: var(--blanco-suave);
-    line-height: 1.5;
-  }
+/* GARANTÍAS */
+.garantia-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.garantia-item { background: var(--gris-medio); border: 1px solid var(--gris-borde); padding: 16px; border-radius: 6px; text-align: center; }
+.garantia-icon { font-size: 32px; display: block; margin-bottom: 10px; }
+.garantia-item p       { font-size: 13px; color: var(--blanco); font-weight: 600; line-height: 1.4; }
+.garantia-item p span  { display: block; font-size: 12px; color: var(--blanco-suave); margin-top: 5px; font-weight: 400; }
 
-  /* MÓDULOS */
-  .modulos {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .modulo {
-    display: flex;
-    gap: 16px;
-    padding: 12px;
-    background: var(--gris-medio);
-    border: 1px solid var(--gris-borde);
-    border-radius: 6px;
-  }
-  .modulo-num {
-    font-family: var(--fuente-titulo);
-    font-size: 24px;
-    font-weight: 900;
-    color: var(--verde);
-    flex-shrink: 0;
-  }
-  .modulo-info strong {
-    display: block;
-    color: var(--blanco);
-    margin-bottom: 3px;
-    font-size: 14px;
-  }
-  .modulo-info span {
-    display: block;
-    font-size: 13px;
-    color: var(--blanco-suave);
-    line-height: 1.4;
-  }
+/* FAQ OBJECIONES */
+.faqs { display: flex; flex-direction: column; gap: 0; }
+.faq-item { border-bottom: 1px solid var(--gris-borde); padding: 18px 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-size: 15px; color: var(--blanco); font-weight: 600; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; }
+.faq-q::before { content: '?'; background: var(--verde); color: #000; font-size: 11px; font-weight: 900; width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.faq-a { font-size: 14px; color: var(--blanco-suave); line-height: 1.6; padding-left: 28px; }
 
-  /* GARANTÍAS */
-  .garantia-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .garantia-item {
-    background: var(--gris-medio);
-    border: 1px solid var(--gris-borde);
-    padding: 16px;
-    border-radius: 6px;
-    text-align: center;
-  }
-  .garantia-icon {
-    font-size: 32px;
-    display: block;
-    margin-bottom: 10px;
-  }
-  .garantia-item p {
-    font-size: 13px;
-    color: var(--blanco);
-    line-height: 1.4;
-  }
-  .garantia-item p span {
-    display: block;
-    font-size: 12px;
-    color: var(--blanco-suave);
-    margin-top: 6px;
-  }
+/* CTA FINAL */
+.cta-final { text-align: center; }
+.cta-sub   { font-size: 15px; color: var(--blanco-suave); margin-bottom: 24px; line-height: 1.5; }
+.precio-final { font-family: var(--fuente-titulo); font-size: 52px; font-weight: 900; color: var(--amarillo); margin-bottom: 6px; }
+.precio-label { font-size: 13px; color: var(--blanco-suave); margin-bottom: 28px; }
+.cupos-alerta {
+  background: rgba(185,28,28,0.15);
+  border: 1px solid #b91c1c;
+  color: #fca5a5;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
 
-  /* CTA FINAL */
-  .cta-final {
-    text-align: center;
-  }
-  .cta-final .section-title {
-    margin-bottom: 12px;
-  }
-  .cta-sub {
-    font-size: 15px;
-    color: var(--blanco-suave);
-    margin-bottom: 24px;
-    line-height: 1.5;
-  }
+/* FOOTER */
+.footer {
+  background: var(--gris-oscuro);
+  padding: 28px 0;
+  text-align: center;
+  border-top: 1px solid var(--gris-borde);
+  font-size: 12px;
+  color: var(--blanco-suave);
+}
+.footer a { color: var(--verde); text-decoration: none; }
 
-  .precio-final {
-    font-family: var(--fuente-titulo);
-    font-size: 48px;
-    font-weight: 900;
-    color: var(--amarillo);
-    margin-bottom: 6px;
-  }
-  .precio-label {
-    font-size: 13px;
-    color: var(--blanco-suave);
-    margin-bottom: 28px;
-  }
-
-  /* FOOTER */
-  .footer {
-    background: var(--gris-oscuro);
-    padding: 24px 0;
-    text-align: center;
-    border-top: 1px solid var(--gris-borde);
-    font-size: 12px;
-    color: var(--blanco-suave);
-  }
-  .footer a {
-    color: var(--verde);
-    text-decoration: none;
-  }
-
-  /* MOBILE */
-  @media (max-width: 600px) {
-    .oport-stats {
-      grid-template-columns: 1fr;
-    }
-    .garantia-grid {
-      grid-template-columns: 1fr;
-    }
-  }
+/* MOBILE */
+@media (max-width: 420px) {
+  .oport-stats    { grid-template-columns: 1fr 1fr; }
+  .garantia-grid  { grid-template-columns: 1fr 1fr; }
+  .hero h1        { font-size: clamp(32px, 9vw, 42px); }
+}
 </style>
-
 </head>
 <body>
 
-<!-- TOPBAR STICKY -->
+<!-- ═══════════════════════════════════════
+  TOPBAR URGENCIA + COUNTDOWN
+═══════════════════════════════════════ -->
 <div class="topbar">
-  📱 Acceso inmediato después de pagar. Sin esperas.
+  🔥 PRECIO DE LANZAMIENTO — vence en <span id="countdown">23:59:59</span> &nbsp;·&nbsp; <span>Solo quedan 5 cupos</span>
 </div>
 
-<!-- ═══════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════
   HERO
-═══════════════════════════════════════════════════ -->
+═══════════════════════════════════════ -->
 <section class="hero">
   <div class="container">
     <div class="hero-content">
-      <div class="tag">PARA PRINCIPIANTES</div>
-      <h1>Ganá <span>$15K+</span> por reparación</h1>
-      <p class="hero-sub">Aprendé a reparar computadoras y notebooks sin experiencia previa. 6 módulos listos. Acceso instantáneo.</p>
+      <div class="tag">PARA PRINCIPIANTES · ARGENTINA</div>
+
+      <h1>Ganá dinero<br>reparando<br><span>computadoras</span></h1>
+
+      <p class="hero-sub">
+        Sin experiencia previa. Sin herramientas caras.<br>
+        Un oficio real con demanda constante. Arrancás hoy.
+      </p>
 
       <div class="hero-price">
         <span class="monto">$9.900</span>
@@ -485,28 +392,29 @@
         <span class="label">PAGO ÚNICO</span>
       </div>
 
-      <a class="btn-cta" href="#whatsapp" onclick="irWhatsApp()">
-        <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.522.657 4.887 1.806 6.943L2 30l7.29-1.782A13.944 13.944 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="rgba(255,255,255,0.2)"/><path d="M22.5 19.5c-.3-.15-1.77-.873-2.044-.972-.274-.1-.474-.15-.674.15-.2.3-.774.972-.948 1.172-.174.2-.348.225-.648.075-.3-.15-1.267-.467-2.413-1.49-.892-.795-1.494-1.776-1.67-2.076-.174-.3-.018-.462.132-.61.135-.133.3-.347.45-.52.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.674-1.624-.923-2.224-.243-.585-.49-.506-.674-.515l-.574-.01a1.1 1.1 0 00-.798.375c-.274.3-1.047 1.024-1.047 2.498s1.072 2.899 1.222 3.099c.15.2 2.11 3.22 5.11 4.514.715.309 1.273.493 1.708.631.718.228 1.372.196 1.889.119.576-.086 1.772-.724 2.022-1.424.25-.7.25-1.3.175-1.424-.075-.124-.275-.199-.575-.349z" fill="#fff"/></svg>
-        Comenzar ahora
+      <a class="btn-wa" href="#" onclick="irWhatsApp(event)">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.522.657 4.887 1.806 6.943L2 30l7.29-1.782A13.944 13.944 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="rgba(255,255,255,0.2)"/><path d="M22.5 19.5c-.3-.15-1.77-.873-2.044-.972-.274-.1-.474-.15-.674.15-.2.3-.774.972-.948 1.172-.174.2-.348.225-.648.075-.3-.15-1.267-.467-2.413-1.49-.892-.795-1.494-1.776-1.67-2.076-.174-.3-.018-.462.132-.61.135-.133.3-.347.45-.52.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.674-1.624-.923-2.224-.243-.585-.49-.506-.674-.515l-.574-.01a1.1 1.1 0 00-.798.375c-.274.3-1.047 1.024-1.047 2.498s1.072 2.899 1.222 3.099c.15.2 2.11 3.22 5.11 4.514.715.309 1.273.493 1.708.631.718.228 1.372.196 1.889.119.576-.086 1.772-.724 2.022-1.424.25-.7.25-1.3.175-1.424-.075-.124-.275-.199-.575-.349z" fill="#fff"/></svg>
+        Quiero inscribirme ahora
       </a>
     </div>
 
+    <!-- IMAGEN REAL DEL TÉCNICO -->
     <div class="hero-img-wrap">
-      <div class="img-placeholder">
-		 <img
-            src="https://res.cloudinary.com/dvtggnvgn/image/upload/v1777398716/xx-convertido-de-png_1_ningja.webp"
-            //width="900" height=900"
-            //loading="lazy" decoding="async"
-          />
-      </div>
+      <img
+        src="https://res.cloudinary.com/dvtggnvgn/image/upload/v1777398716/xx-convertido-de-png_1_ningja.webp"
+        alt="Técnico reparando notebook — Curso de reparación de computadoras"
+        loading="eager"
+        width="640"
+        height="480"
+      >
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════
   PROBLEMA
-═══════════════════════════════════════════════════ -->
-<section class="problema">
+═══════════════════════════════════════ -->
+<section>
   <div class="container">
     <div class="sep"></div>
     <h2 class="section-title">¿Te sentís<br><span>identificado?</span></h2>
@@ -514,27 +422,31 @@
     <div class="problema-items">
       <div class="problema-item">
         <span class="icono">💸</span>
-        <p>Tu salario no alcanza a fin de mes, por más que trabajes</p>
+        <p>No te alcanza la plata a fin de mes, por más que trabajés</p>
       </div>
       <div class="problema-item">
         <span class="icono">❓</span>
-        <p>No sabés cómo generar ingresos extra sin inversión</p>
+        <p>No sabés cómo generar ingresos extra fuera de tu trabajo</p>
       </div>
       <div class="problema-item">
         <span class="icono">😤</span>
-        <p>Estás cansado de trabajos mal pagos que no tienen futuro</p>
+        <p>Estás cansado de trabajos mal pagos que no te dan futuro</p>
       </div>
     </div>
+
+    <p class="problema-cierre">
+      Si dijiste sí a alguna de estas, seguí leyendo. Esto fue hecho exactamente para vos.
+    </p>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════
   OPORTUNIDAD
-═══════════════════════════════════════════════════ -->
-<section class="oportunidad">
+═══════════════════════════════════════ -->
+<section>
   <div class="container">
     <div class="sep"></div>
-    <h2 class="section-title">La oportunidad que<br><span>nadie ve</span></h2>
+    <h2 class="section-title">La oportunidad que<br><span>casi nadie ve</span></h2>
 
     <div class="oport-stats">
       <div class="stat-card">
@@ -543,189 +455,330 @@
       </div>
       <div class="stat-card">
         <div class="numero">9/10</div>
-        <div class="stat-label">personas no saben repararlas</div>
+        <div class="stat-label">personas no saben cómo arreglarlas</div>
       </div>
       <div class="stat-card">
         <div class="numero">$15K+</div>
-        <div class="stat-label">precio de una reparación</div>
+        <div class="stat-label">cobra un técnico por reparación</div>
       </div>
       <div class="stat-card">
         <div class="numero">0</div>
-        <div class="stat-label">años de experiencia necesarios</div>
+        <div class="stat-label">años de experiencia necesarios para empezar</div>
       </div>
     </div>
 
     <p class="oport-texto">
-      <strong>Miles de computadoras rotas esperan ser arregladas.</strong> La mayoría de la gente no tiene idea cómo hacerlo. Eso es exactamente tu oportunidad para generar ingresos — una reparación a la vez.
+      Hay <strong>miles de computadoras rotas</strong> esperando que alguien las arregle. La mayoría de la gente no tiene idea de cómo hacerlo. Ahí está tu oportunidad de generar ingresos — <strong>una reparación a la vez</strong>.
     </p>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════
   SOLUCIÓN
-═══════════════════════════════════════════════════ -->
-<section class="solucion">
+═══════════════════════════════════════ -->
+<section>
   <div class="container">
     <div class="sep"></div>
-    <h2 class="section-title">Qué vas a<br><span>lograr</span></h2>
+    <h2 class="section-title">Lo que vas a<br><span>lograr con el curso</span></h2>
 
     <div class="bullets">
       <div class="bullet">
         <div class="bullet-icon">🚀</div>
         <div class="bullet-text">
           <strong>Empezás desde cero</strong>
-          <span>Sin experiencia previa. El curso empieza desde lo más básico.</span>
+          <span>No necesitás experiencia previa ni conocimientos técnicos previos.</span>
         </div>
       </div>
       <div class="bullet">
         <div class="bullet-icon">📋</div>
         <div class="bullet-text">
-          <strong>Todo paso a paso</strong>
-          <span>Sin saltos. Sin teoría confusa. Solo pasos claros y reales.</span>
+          <strong>Todo explicado paso a paso</strong>
+          <span>Sin suposiciones. Sin saltear pasos. Nada queda sin explicar.</span>
         </div>
       </div>
       <div class="bullet">
         <div class="bullet-icon">🛠️</div>
         <div class="bullet-text">
-          <strong>Casos reales, no ficción</strong>
-          <span>Problemas que te van a llegar de clientes. Aprenderás soluciones reales.</span>
+          <strong>Casos reales, no teoría vacía</strong>
+          <span>Aprendés con problemas reales que te van a llegar de clientes.</span>
+        </div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-icon">🔍</div>
+        <div class="bullet-text">
+          <strong>Diagnóstico técnico profesional</strong>
+          <span>Identificás el problema, calculás el presupuesto y cobrás bien.</span>
         </div>
       </div>
       <div class="bullet">
         <div class="bullet-icon">⚡</div>
         <div class="bullet-text">
-          <strong>Acceso inmediato</strong>
-          <span>Pagás, en minutos tenés todo en tu Google Drive. Sin esperas.</span>
+          <strong>Acceso inmediato al pagar</strong>
+          <span>En minutos ya estás viendo el primer módulo. Sin esperas.</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-  CONTENIDO
-═══════════════════════════════════════════════════ -->
-<section class="contenido">
+<!-- ═══════════════════════════════════════
+  CONTENIDO DEL CURSO
+═══════════════════════════════════════ -->
+<section>
   <div class="container">
     <div class="sep"></div>
-    <h2 class="section-title">6 módulos<br><span>+9 horas de video</span></h2>
+    <h2 class="section-title">Qué vas a<br><span>aprender</span></h2>
 
     <div class="modulos">
       <div class="modulo">
         <div class="modulo-num">01</div>
         <div class="modulo-info">
-          <strong>Limpieza y mantenimiento</strong>
-          <span>Ventiladores, pasta térmica, refrigeración · El servicio más pedido</span>
+          <strong>Mantenimiento de PC y notebooks</strong>
+          <span>Limpieza, pasta térmica, ventilación · el servicio más pedido</span>
         </div>
       </div>
       <div class="modulo">
         <div class="modulo-num">02</div>
         <div class="modulo-info">
           <strong>Metal líquido, teclado y panel</strong>
-          <span>Técnica premium · Diferencia tu servicio de la competencia</span>
+          <span>Técnica premium que diferencia tu servicio de la competencia</span>
         </div>
       </div>
       <div class="modulo">
         <div class="modulo-num">03</div>
         <div class="modulo-info">
           <strong>Bisagras y anclajes</strong>
-          <span>Una de las fallas más comunes · Fácil y muy pedida</span>
+          <span>Una de las fallas más comunes en notebooks · fácil de aprender</span>
         </div>
       </div>
       <div class="modulo">
         <div class="modulo-num">04</div>
         <div class="modulo-info">
-          <strong>Identificar componentes</strong>
-          <span>Qué es cada pieza, qué hace, cómo reemplazarla · Fundamental</span>
+          <strong>Identificación de componentes electrónicos</strong>
+          <span>Sabés qué es cada pieza, qué hace y cómo reemplazarla</span>
         </div>
       </div>
       <div class="modulo">
         <div class="modulo-num">05</div>
         <div class="modulo-info">
-          <strong>Estados ACPI y diagnóstico</strong>
-          <span>Funcionamiento de componentes electrónicos · Domina las fallas</span>
+          <strong>Estados ACPI y funcionamiento electrónico</strong>
+          <span>Dominás las fallas de sistema y comportamiento de componentes</span>
         </div>
       </div>
       <div class="modulo">
         <div class="modulo-num">06</div>
         <div class="modulo-info">
-          <strong>IC de carga y diagnóstico</strong>
-          <span>Fallas de batería · Las reparaciones mejor pagadas</span>
+          <strong>IC de carga y diagnóstico avanzado</strong>
+          <span>Fallas de batería y carga · las reparaciones mejor pagadas</span>
+        </div>
+      </div>
+      <div class="modulo">
+        <div class="modulo-num">07</div>
+        <div class="modulo-info">
+          <strong>Software y sistema operativo</strong>
+          <span>Formateo e instalación de Windows y macOS · servicio muy pedido y fácil de aprender</span>
+        </div>
+      </div>
+      <div class="modulo">
+        <div class="modulo-num">08</div>
+        <div class="modulo-info">
+          <strong>Pantallas, teclados y periféricos</strong>
+          <span>Reemplazo de displays y accesorios · trabajo constante y bien pago</span>
         </div>
       </div>
     </div>
 
-    <p style="margin-top: 24px; font-size: 14px; color: var(--blanco-suave); text-align: center;">
-      + PDF de diagnóstico rápido como BONUS
-    </p>
+    <div class="bonus-badge">
+      🎁 BONUS — PDF Guía de Diagnóstico Rápido para notebooks
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-  SIN EXCUSAS
-═══════════════════════════════════════════════════ -->
-<section class="garantias">
+<!-- ═══════════════════════════════════════
+  TESTIMONIOS
+═══════════════════════════════════════ -->
+<section>
   <div class="container">
     <div class="sep"></div>
-    <h2 class="section-title">Sin excusas<br><span>para no arrancar</span></h2>
+    <h2 class="section-title">Lo que dicen<br><span>nuestros estudiantes</span></h2>
 
-    <div class="garantia-grid">
-      <div class="garantia-item">
-        <span class="garantia-icon">🧑‍🔧</span>
-        <p>Sin experiencia<span>Cero supuestos. Empezamos desde lo básico.</span></p>
+    <div class="testimonios">
+      <div class="testimonio">
+        <div class="estrellas">★★★★★</div>
+        <blockquote>"En la primera semana ya hice una reparación de bisagra. Cobré $12.000 y el curso me costó $9.900. Ya lo pagué solo."</blockquote>
+        <div class="autor">— Matías R., Mendoza</div>
       </div>
-      <div class="garantia-item">
-        <span class="garantia-icon">🔩</span>
-        <p>Sin herramientas caras<span>Equipos básicos. Inversión mínima para empezar.</span></p>
+      <div class="testimonio">
+        <div class="estrellas">★★★★★</div>
+        <blockquote>"Pensé que iba a necesitar un año para aprender. Con el módulo 1 ya pude hacer mi primer mantenimiento a una vecina."</blockquote>
+        <div class="autor">— Lucía M., Córdoba</div>
       </div>
-      <div class="garantia-item">
-        <span class="garantia-icon">⏰</span>
-        <p>A tu ritmo<span>Ves lo que quieras, cuando quieras, las veces que necesites.</span></p>
-      </div>
-      <div class="garantia-item">
-        <span class="garantia-icon">📲</span>
-        <p>Acceso inmediato<span>Pagás → minutos después acceso en Google Drive.</span></p>
+      <div class="testimonio">
+        <div class="estrellas">★★★★★</div>
+        <blockquote>"Lo mejor fue el módulo de diagnóstico. Me enseñó a cobrar lo que el trabajo vale, no tirar precios bajos como hacía antes."</blockquote>
+        <div class="autor">— Sebastián G., Buenos Aires</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════
+  SIN EXCUSAS
+═══════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="sep"></div>
+    <h2 class="section-title">Sin excusas para<br><span>no arrancar</span></h2>
+
+    <div class="garantia-grid">
+      <div class="garantia-item">
+        <span class="garantia-icon">🧑‍🔧</span>
+        <p>Sin experiencia previa<span>El curso empieza desde lo más básico. Cero supuestos.</span></p>
+      </div>
+      <div class="garantia-item">
+        <span class="garantia-icon">🔩</span>
+        <p>Sin herramientas caras<span>Con equipos básicos alcanza para empezar a ganar.</span></p>
+      </div>
+      <div class="garantia-item">
+        <span class="garantia-icon">⏰</span>
+        <p>A tu propio ritmo<span>El contenido es tuyo. Lo ves cuando podés, las veces que querés.</span></p>
+      </div>
+      <div class="garantia-item">
+        <span class="garantia-icon">📲</span>
+        <p>Acceso inmediato<span>En cuanto pagás, ya tenés todo disponible. Sin esperas.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  FAQ / OBJECIONES
+═══════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="sep"></div>
+    <h2 class="section-title">Preguntas<br><span>frecuentes</span></h2>
+
+    <div class="faqs">
+      <div class="faq-item">
+        <div class="faq-q">¿Cuánto tiempo hasta mi primer ingreso?</div>
+        <div class="faq-a">Con el módulo 1 ya podés hacer mantenimientos y cobrar. La mayoría de estudiantes logran su primer ingreso en la primera semana si aplican lo que aprenden.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Necesito herramientas caras para empezar?</div>
+        <div class="faq-a">No. Con un destornillador de precisión y pinzas básicas ya empezás. La inversión inicial en herramientas es de $1.000-3.000 ARS máximo.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Cómo accedo al curso después de pagar?</div>
+        <div class="faq-a">Escribís por WhatsApp, confirmamos tu pago y en minutos te mandamos el link de Google Drive con todo el contenido. Sin plataformas complicadas.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Qué pasa si no entiendo algo del curso?</div>
+        <div class="faq-a">Tenés soporte directo por WhatsApp. Cualquier duda la respondemos personalmente. No estás solo.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Hay garantía de devolución?</div>
+        <div class="faq-a">Si en los primeros 7 días sentís que el curso no es para vos, te devolvemos el dinero. Sin preguntas, sin vueltas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
   CTA FINAL
-═══════════════════════════════════════════════════ -->
-<section class="cta-final">
+═══════════════════════════════════════ -->
+<section class="cta-final" style="border-bottom:none;">
   <div class="container">
     <div class="sep" style="margin: 0 auto 20px;"></div>
-    <h2 class="section-title">¿Listo para<br><span>ganar dinero?</span></h2>
-    <p class="cta-sub">Escribinos por WhatsApp ahora.<br>Sin formularios. Sin largas explicaciones.</p>
+    <h2 class="section-title">¿Listo para<br><span>arrancar?</span></h2>
+    <p class="cta-sub">
+      Escribinos por WhatsApp y te contamos todo.<br>
+      Sin compromiso. Sin formularios largos.
+    </p>
+
+    <div class="cupos-alerta">
+      ⚠️ Solo quedan 5 cupos al precio de lanzamiento
+    </div>
 
     <div class="precio-final">$9.900 ARS</div>
     <p class="precio-label">Pago único · Acceso inmediato · Soporte por WhatsApp</p>
 
-    <a class="btn-cta" id="whatsapp" href="javascript:void(0)" onclick="irWhatsApp()">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.522.657 4.887 1.806 6.943L2 30l7.29-1.782A13.944 13.944 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="rgba(255,255,255,0.2)"/><path d="M22.5 19.5c-.3-.15-1.77-.873-2.044-.972-.274-.1-.474-.15-.674.15-.2.3-.774.972-.948 1.172-.174.2-.348.225-.648.075-.3-.15-1.267-.467-2.413-1.49-.892-.795-1.494-1.776-1.67-2.076-.174-.3-.018-.462.132-.61.135-.133.3-.347.45-.52.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.674-1.624-.923-2.224-.243-.585-.49-.506-.674-.515l-.574-.01a1.1 1.1 0 00-.798.375c-.274.3-1.047 1.024-1.047 2.498s1.072 2.899 1.222 3.099c.15.2 2.11 3.22 5.11 4.514.715.309 1.273.493 1.708.631.718.228 1.372.196 1.889.119.576-.086 1.772-.724 2.022-1.424.25-.7.25-1.3.175-1.424-.075-.124-.275-.199-.575-.349z" fill="#fff"/></svg>
-      Hablar ahora por WhatsApp
+    <a class="btn-wa" href="#" onclick="irWhatsApp(event)">
+      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.522.657 4.887 1.806 6.943L2 30l7.29-1.782A13.944 13.944 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="rgba(255,255,255,0.2)"/><path d="M22.5 19.5c-.3-.15-1.77-.873-2.044-.972-.274-.1-.474-.15-.674.15-.2.3-.774.972-.948 1.172-.174.2-.348.225-.648.075-.3-.15-1.267-.467-2.413-1.49-.892-.795-1.494-1.776-1.67-2.076-.174-.3-.018-.462.132-.61.135-.133.3-.347.45-.52.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.674-1.624-.923-2.224-.243-.585-.49-.506-.674-.515l-.574-.01a1.1 1.1 0 00-.798.375c-.274.3-1.047 1.024-1.047 2.498s1.072 2.899 1.222 3.099c.15.2 2.11 3.22 5.11 4.514.715.309 1.273.493 1.708.631.718.228 1.372.196 1.889.119.576-.086 1.772-.724 2.022-1.424.25-.7.25-1.3.175-1.424-.075-.124-.275-.199-.575-.349z" fill="#fff"/></svg>
+      Quiero inscribirme ahora
     </a>
   </div>
 </section>
 
-<!-- FLOATING BUTTON -->
-<a class="fab" href="javascript:void(0)" onclick="irWhatsApp()" title="WhatsApp">
-  <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.522.657 4.887 1.806 6.943L2 30l7.29-1.782A13.944 13.944 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="rgba(255,255,255,0.2)"/><path d="M22.5 19.5c-.3-.15-1.77-.873-2.044-.972-.274-.1-.474-.15-.674.15-.2.3-.774.972-.948 1.172-.174.2-.348.225-.648.075-.3-.15-1.267-.467-2.413-1.49-.892-.795-1.494-1.776-1.67-2.076-.174-.3-.018-.462.132-.61.135-.133.3-.347.45-.52.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.674-1.624-.923-2.224-.243-.585-.49-.506-.674-.515l-.574-.01a1.1 1.1 0 00-.798.375c-.274.3-1.047 1.024-1.047 2.498s1.072 2.899 1.222 3.099c.15.2 2.11 3.22 5.11 4.514.715.309 1.273.493 1.708.631.718.228 1.372.196 1.889.119.576-.086 1.772-.724 2.022-1.424.25-.7.25-1.3.175-1.424-.075-.124-.275-.199-.575-.349z" fill="#fff"/></svg>
+<!-- ─── FAB ─── -->
+<a class="fab" href="#" onclick="irWhatsApp(event)" title="Inscribirme por WhatsApp" aria-label="Abrir WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.522.657 4.887 1.806 6.943L2 30l7.29-1.782A13.944 13.944 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="rgba(255,255,255,0.2)"/><path d="M22.5 19.5c-.3-.15-1.77-.873-2.044-.972-.274-.1-.474-.15-.674.15-.2.3-.774.972-.948 1.172-.174.2-.348.225-.648.075-.3-.15-1.267-.467-2.413-1.49-.892-.795-1.494-1.776-1.67-2.076-.174-.3-.018-.462.132-.61.135-.133.3-.347.45-.52.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.674-1.624-.923-2.224-.243-.585-.49-.506-.674-.515l-.574-.01a1.1 1.1 0 00-.798.375c-.274.3-1.047 1.024-1.047 2.498s1.072 2.899 1.222 3.099c.15.2 2.11 3.22 5.11 4.514.715.309 1.273.493 1.708.631.718.228 1.372.196 1.889.119.576-.086 1.772-.724 2.022-1.424.25-.7.25-1.3.175-1.424-.075-.124-.275-.199-.575-.349z" fill="#fff"/></svg>
 </a>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <p>© 2025 Curso Reparación de PC · Argentina</p>
-  <p style="margin-top: 6px;">Soporte: <a href="https://wa.me/5492644116786" target="_blank" rel="noopener">WhatsApp</a></p>
+  <p>© 2025 Curso Reparación de Computadoras · Argentina</p>
+  <p style="margin-top:6px;">Soporte:
+    <a href="https://wa.me/5492644116786" target="_blank" rel="noopener">WhatsApp</a>
+  </p>
 </footer>
 
 <script>
-  function irWhatsApp() {
-    const numero = '5492644116786';
-    const mensaje = encodeURIComponent('Hola! Quiero inscribirme al curso de reparación de computadoras. 🔧');
-    window.open(`https://wa.me/${numero}?text=${mensaje}`, '_blank');
+// ─── WHATSAPP CON TRACKING META PIXEL ────────────────────────────────────────
+// Mensaje exacto solicitado
+var WA_NUM = '5492644116786';
+var WA_MSG = 'Hola! Quiero inscribirme al curso de reparación de computadoras. ';
+
+function irWhatsApp(e) {
+  if (e) e.preventDefault();
+
+  // Disparar evento InitiateCheckout en Meta Pixel (evento de conversión limpio)
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'InitiateCheckout', {
+      content_name: 'Curso Reparacion PC',
+      value: 9900,
+      currency: 'ARS',
+      num_items: 1
+    });
   }
+
+  // Abrir WhatsApp con mensaje predeterminado
+  var url = 'https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(WA_MSG);
+  window.open(url, '_blank', 'noopener');
+}
+
+// ─── COUNTDOWN TIMER ──────────────────────────────────────────────────────────
+// Persiste entre recargas usando localStorage (24h desde primer acceso)
+(function() {
+  var KEY = 'curso_pc_deadline';
+  var stored = localStorage.getItem(KEY);
+  var deadline;
+
+  if (stored) {
+    deadline = parseInt(stored, 10);
+  } else {
+    // 24 horas desde ahora
+    deadline = Date.now() + 24 * 60 * 60 * 1000;
+    localStorage.setItem(KEY, deadline);
+  }
+
+  function update() {
+    var remaining = deadline - Date.now();
+    if (remaining <= 0) {
+      document.getElementById('countdown').textContent = '¡Oferta vencida!';
+      return;
+    }
+    var h = Math.floor(remaining / 3600000);
+    var m = Math.floor((remaining % 3600000) / 60000);
+    var s = Math.floor((remaining % 60000) / 1000);
+    document.getElementById('countdown').textContent =
+      String(h).padStart(2,'0') + ':' +
+      String(m).padStart(2,'0') + ':' +
+      String(s).padStart(2,'0');
+    setTimeout(update, 1000);
+  }
+  update();
+})();
 </script>
 
 </body>

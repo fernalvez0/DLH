@@ -2,784 +2,1494 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="description" content="Aprendé a ganar dinero reparando computadoras desde cero. Sin experiencia. Acceso inmediato. Solo $9.900 ARS.">
-<title>Ganá dinero reparando computadoras desde cero</title>
-
-<!-- Preconnect fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-
-<!-- ═══════════════════════════════════════════════════
-  META PIXEL — PIXEL LIMPIO (SIN HISTORIAL)
-  IMPORTANTE: Reemplazar PIXEL_ID_AQUI con tu ID real
-  Ejemplo: fbq('init', '1234567890123456');
-  
-  EVENTOS CONFIGURADOS (limpios, sin Purchase):
-  • PageView → automático al cargar
-  • ViewContent → automático al cargar
-  • InitiateCheckout → al hacer clic en cualquier botón WA
-  
-  NO usamos Purchase para evitar eventos fantasma.
-  InitiateCheckout es el evento de optimización para Meta.
-  
-  FUTURO CRM / WHATSAPP BUSINESS:
-  Cuando tengas pixel de CRM WA, agregar segundo fbq('init') aquí:
-  fbq('init', 'SEGUNDO_PIXEL_CRM');
-  Meta permite múltiples píxeles en la misma página.
-═══════════════════════════════════════════════════ -->
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-
-// ─── PIXEL PRINCIPAL (Curso PC) ───────────────────────
-fbq('init', '2817396475296258');
-fbq('track', 'PageView');
-fbq('track', 'ViewContent', {
-  content_name: 'Curso Reparacion PC',
-  content_category: 'Educacion',
-  value: 9900,
-  currency: 'ARS'
-});
-
-// ─── PIXEL 2 (CRM WhatsApp Business) — FUTURO ─────────
-// Cuando tengas el ID del pixel de tu CRM:
-// fbq('init', 'PIXEL_CRM_ID_AQUI');
-// Los eventos se dispararán a AMBOS píxeles automáticamente.
-</script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2817396475296258&ev=PageView&noscript=1"/></noscript>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📐 Álgebra — Resumen Parcial v2.0</title>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
 
 :root {
-  --verde:        #1DB954;
-  --verde-dark:   #169c44;
-  --verde-glow:   rgba(29,185,84,0.20);
-  --negro:        #0a0a0a;
-  --gris-oscuro:  #111214;
-  --gris-medio:   #1c1f23;
-  --gris-borde:   #2a2e35;
-  --blanco:       #f5f5f5;
-  --blanco-suave: #a0a6b0;
-  --amarillo:     #FFD600;
-  --fuente-titulo:'Barlow Condensed', sans-serif;
-  --fuente-body:  'Barlow', sans-serif;
+  --bg: #0b0d12;
+  --surface: #111318;
+  --card: #161a22;
+  --card2: #1c2130;
+  --border: #252d3e;
+  --border2: #1e2535;
+  --g: #3dffa0;     /* verde */
+  --b: #4db8ff;     /* azul */
+  --p: #b87fff;     /* violeta */
+  --y: #ffd166;     /* amarillo */
+  --r: #ff6b6b;     /* rojo */
+  --o: #ff9f43;     /* naranja */
+  --text: #dde4f0;
+  --muted: #7a8aaa;
+  --dim: #4a5568;
 }
 
+* { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+
 body {
-  background: var(--negro);
-  color: var(--blanco);
-  font-family: var(--fuente-body);
-  font-size: 16px;
-  line-height: 1.5;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14.5px;
+  line-height: 1.7;
+  min-height: 100vh;
 }
 
-.container {
-  width: 100%;
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* ─── LAYOUT ─── */
+.shell {
+  display: flex;
+  min-height: 100vh;
 }
 
-.tag {
-  display: inline-block;
-  background: var(--verde-glow);
-  border: 1px solid var(--verde);
-  color: var(--verde);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: 2px;
-  margin-bottom: 16px;
-}
-
-/* ─── TOPBAR URGENCIA ─── */
-.topbar {
-  background: #b91c1c;
-  color: #fff;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  padding: 10px 16px;
-  line-height: 1.4;
+/* ─── SIDEBAR ─── */
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
   position: sticky;
   top: 0;
-  z-index: 100;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px 0;
 }
-.topbar span { color: var(--amarillo); }
-#countdown { font-variant-numeric: tabular-nums; letter-spacing: 1px; }
 
-/* ─── BOTÓN WHATSAPP ─── */
-.btn-wa {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: var(--verde);
-  color: #fff;
-  font-family: var(--fuente-titulo);
-  font-size: 21px;
-  font-weight: 900;
-  letter-spacing: 0.5px;
+.sidebar-logo {
+  padding: 0 16px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-logo .logo-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  background: linear-gradient(90deg, var(--g), var(--b));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.sidebar-logo .logo-sub {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.nav-group-title {
+  font-size: 0.68rem;
+  font-weight: 600;
   text-transform: uppercase;
-  text-decoration: none;
-  padding: 18px 28px;
-  border-radius: 6px;
-  min-height: 62px;
-  width: 100%;
-  border: none;
-  cursor: pointer;
-  transition: background 0.18s, transform 0.12s;
-  box-shadow: 0 4px 28px rgba(29,185,84,0.40);
-  -webkit-tap-highlight-color: transparent;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+  padding: 8px 16px 4px;
 }
-.btn-wa:active { background: var(--verde-dark); transform: scale(0.98); }
-.btn-wa svg { flex-shrink: 0; }
 
-/* ─── FLOATING BUTTON ─── */
-.fab {
-  position: fixed;
-  bottom: 22px;
-  right: 18px;
-  z-index: 9999;
-  background: var(--verde);
-  border-radius: 50%;
-  width: 64px;
-  height: 64px;
+.nav-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 28px rgba(29,185,84,0.60);
+  gap: 8px;
+  padding: 7px 16px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: var(--muted);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
   text-decoration: none;
-  -webkit-tap-highlight-color: transparent;
-  animation: pulse-fab 2.5s infinite;
 }
-.fab:active { transform: scale(0.93); }
-@keyframes pulse-fab {
-  0%,100% { box-shadow: 0 6px 28px rgba(29,185,84,0.55); }
-  50%      { box-shadow: 0 6px 44px rgba(29,185,84,0.90); }
+.nav-item:hover { color: var(--text); background: rgba(255,255,255,0.03); }
+.nav-item.active { color: var(--text); border-left-color: var(--g); background: rgba(61,255,160,0.06); }
+.nav-item .ni-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ─── MAIN ─── */
+.main {
+  flex: 1;
+  overflow-x: hidden;
 }
 
 /* ─── HERO ─── */
 .hero {
-  background: var(--gris-oscuro);
-  padding: 44px 0 0;
-  border-bottom: 1px solid var(--gris-borde);
+  background: linear-gradient(135deg, #0e1420 0%, #131928 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 48px 32px;
   position: relative;
   overflow: hidden;
 }
 .hero::before {
   content: '';
   position: absolute;
-  top: -80px; left: -80px;
-  width: 340px; height: 340px;
-  background: radial-gradient(circle, rgba(29,185,84,0.11) 0%, transparent 70%);
+  top: -80px; left: -80px; right: 0;
+  height: 280px;
+  background: radial-gradient(ellipse at 30% 0%, rgba(61,255,160,0.08) 0%, transparent 60%);
   pointer-events: none;
 }
-.hero-content { position: relative; z-index: 1; }
-
 .hero h1 {
-  font-family: var(--fuente-titulo);
-  font-size: clamp(36px, 10vw, 52px);
-  font-weight: 900;
-  line-height: 1.05;
-  text-transform: uppercase;
-  letter-spacing: -0.5px;
-  margin-bottom: 16px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  background: linear-gradient(90deg, var(--g) 0%, var(--b) 50%, var(--p) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
 }
-.hero h1 span { color: var(--verde); }
-
-.hero-sub {
-  font-size: 17px;
-  color: var(--blanco-suave);
-  margin-bottom: 28px;
-  line-height: 1.5;
-}
-
-.hero-price {
+.hero .subtitle { color: var(--muted); font-size: 0.88rem; }
+.hero .chips {
   display: flex;
-  align-items: baseline;
   gap: 8px;
-  margin-bottom: 28px;
+  margin-top: 16px;
+  flex-wrap: wrap;
 }
-.hero-price .monto  { font-family: var(--fuente-titulo); font-size: 42px; font-weight: 900; color: var(--amarillo); }
-.hero-price .moneda { font-size: 18px; color: var(--blanco-suave); font-weight: 600; }
-.hero-price .label  { font-size: 13px; color: var(--blanco-suave); background: var(--gris-medio); padding: 3px 8px; border-radius: 3px; border: 1px solid var(--gris-borde); align-self: center; }
+.chip {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid;
+}
+.chip-g { background: rgba(61,255,160,0.1); color: var(--g); border-color: rgba(61,255,160,0.3); }
+.chip-b { background: rgba(77,184,255,0.1); color: var(--b); border-color: rgba(77,184,255,0.3); }
+.chip-p { background: rgba(184,127,255,0.1); color: var(--p); border-color: rgba(184,127,255,0.3); }
+.chip-r { background: rgba(255,107,107,0.1); color: var(--r); border-color: rgba(255,107,107,0.3); }
+.chip-y { background: rgba(255,209,102,0.1); color: var(--y); border-color: rgba(255,209,102,0.3); }
 
-/* IMAGEN HERO */
-.hero-img-wrap {
-  margin-top: 32px;
-  width: 100%;
-  aspect-ratio: 4/3;
-  border-top: 3px solid var(--verde);
-  overflow: hidden;
-  background: var(--gris-medio);
+/* ─── TABS ─── */
+.tab-bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 0;
+  padding: 0 32px;
+  overflow-x: auto;
 }
-.hero-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
+.tab-btn {
+  padding: 14px 20px;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active-g { color: var(--g); border-bottom-color: var(--g); }
+.tab-btn.active-b { color: var(--b); border-bottom-color: var(--b); }
+.tab-btn.active-p { color: var(--p); border-bottom-color: var(--p); }
+.tab-btn.active-r { color: var(--r); border-bottom-color: var(--r); }
+
+/* ─── CONTENT ─── */
+.content {
+  padding: 32px 48px;
+  max-width: 900px;
+}
+
+.section-panel { display: none; }
+.section-panel.visible { display: block; }
+
+/* ─── HEADINGS ─── */
+.sh {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
+.sh-sub { color: var(--muted); font-size: 0.85rem; margin-bottom: 28px; }
+
+h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 28px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+h2::before {
+  content: '';
   display: block;
+  width: 3px;
+  height: 18px;
+  border-radius: 2px;
+  background: currentColor;
+  flex-shrink: 0;
 }
 
-/* ─── SECCIONES ─── */
-section { padding: 48px 0; border-bottom: 1px solid var(--gris-borde); }
-section:last-of-type { border-bottom: none; }
-
-.section-title {
-  font-family: var(--fuente-titulo);
-  font-size: clamp(28px, 8vw, 38px);
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 1.08;
-  margin-bottom: 28px;
+/* ─── CARDS ─── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
 }
-.section-title span { color: var(--verde); }
+.card-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.ct-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
-.sep { width: 32px; height: 2px; background: var(--verde); margin-bottom: 20px; }
+/* ─── DEF / FORMULA / BOXES ─── */
+.def {
+  background: var(--card2);
+  border-left: 3px solid var(--p);
+  border-radius: 0 8px 8px 0;
+  padding: 11px 15px;
+  margin: 9px 0;
+  font-size: 0.88rem;
+}
+.def strong { color: var(--p); }
 
-/* PROBLEMA */
-.problema-items { display: flex; flex-direction: column; gap: 18px; margin-bottom: 24px; }
-.problema-item  { display: flex; gap: 16px; }
-.problema-item .icono { font-size: 28px; flex-shrink: 0; }
-.problema-item p { font-size: 16px; color: var(--blanco-suave); line-height: 1.5; }
-.problema-cierre {
-  font-size: 15px;
-  color: var(--verde);
-  font-weight: 600;
-  border-left: 3px solid var(--verde);
-  padding-left: 14px;
+.formula {
+  font-family: 'JetBrains Mono', monospace;
+  background: #090b10;
+  border: 1px solid #1e2535;
+  border-radius: 7px;
+  padding: 10px 14px;
+  margin: 8px 0;
+  font-size: 0.85rem;
+  color: var(--g);
+  overflow-x: auto;
+  white-space: pre;
   line-height: 1.5;
-  margin-top: 24px;
 }
 
-/* OPORTUNIDAD */
-.oport-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 24px;
+.tip {
+  background: rgba(255,209,102,0.07);
+  border: 1px solid rgba(255,209,102,0.25);
+  border-radius: 7px;
+  padding: 9px 13px;
+  margin: 9px 0;
+  font-size: 0.86rem;
+  color: #f0c060;
 }
-.stat-card { background: var(--gris-medio); border: 1px solid var(--gris-borde); padding: 18px; border-radius: 6px; text-align: center; }
-.stat-card .numero      { font-family: var(--fuente-titulo); font-size: 30px; font-weight: 900; color: var(--amarillo); margin-bottom: 6px; }
-.stat-card .stat-label  { font-size: 13px; color: var(--blanco-suave); line-height: 1.3; }
-.oport-texto            { font-size: 16px; color: var(--blanco-suave); line-height: 1.6; }
+.tip::before { content: "💡 "; }
 
-/* BULLETS */
-.bullets    { display: flex; flex-direction: column; gap: 20px; }
-.bullet     { display: flex; gap: 16px; }
-.bullet-icon { font-size: 28px; flex-shrink: 0; }
-.bullet-text strong { display: block; color: var(--blanco); margin-bottom: 4px; font-size: 15px; }
-.bullet-text span   { display: block; font-size: 14px; color: var(--blanco-suave); line-height: 1.5; }
+.alert {
+  background: rgba(255,107,107,0.07);
+  border: 1px solid rgba(255,107,107,0.25);
+  border-radius: 7px;
+  padding: 9px 13px;
+  margin: 9px 0;
+  font-size: 0.86rem;
+  color: #ff8080;
+}
+.alert::before { content: "⚠️ "; }
 
-/* MÓDULOS */
-.modulos { display: flex; flex-direction: column; gap: 10px; }
-.modulo  { display: flex; gap: 16px; padding: 14px; background: var(--gris-medio); border: 1px solid var(--gris-borde); border-radius: 6px; }
-.modulo-num  { font-family: var(--fuente-titulo); font-size: 26px; font-weight: 900; color: var(--verde); flex-shrink: 0; min-width: 28px; }
-.modulo-info strong { display: block; color: var(--blanco); margin-bottom: 3px; font-size: 14px; }
-.modulo-info span   { display: block; font-size: 13px; color: var(--blanco-suave); line-height: 1.4; }
-.bonus-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(255,214,0,0.12); border: 1px solid var(--amarillo);
-  color: var(--amarillo); font-size: 12px; font-weight: 700;
-  padding: 3px 10px; border-radius: 2px; margin-top: 16px;
-  letter-spacing: 1px; text-transform: uppercase;
+.note {
+  background: rgba(77,184,255,0.07);
+  border: 1px solid rgba(77,184,255,0.25);
+  border-radius: 7px;
+  padding: 9px 13px;
+  margin: 9px 0;
+  font-size: 0.86rem;
+  color: #7acfff;
+}
+.note::before { content: "📌 "; }
+
+/* ─── STEPS ─── */
+.steps { counter-reset: s; list-style: none; margin: 8px 0; }
+.steps li {
+  counter-increment: s;
+  padding: 7px 10px 7px 42px;
+  position: relative;
+  font-size: 0.88rem;
+  border-bottom: 1px solid var(--border2);
+}
+.steps li:last-child { border-bottom: none; }
+.steps li::before {
+  content: counter(s);
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px; height: 22px;
+  background: var(--p);
+  border-radius: 50%;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 22px;
 }
 
-/* TESTIMONIOS */
-.testimonios { display: flex; flex-direction: column; gap: 16px; }
-.testimonio {
-  background: var(--gris-medio);
-  border: 1px solid var(--gris-borde);
-  border-left: 3px solid var(--verde);
-  padding: 18px;
-  border-radius: 0 6px 6px 0;
+/* ─── RECIPE BOX ─── */
+.recipe {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 12px 0;
 }
-.testimonio blockquote { font-size: 15px; color: var(--blanco); line-height: 1.6; margin-bottom: 10px; font-style: italic; }
-.testimonio .autor { font-size: 13px; color: var(--verde); font-weight: 600; }
-.testimonio .estrellas { color: var(--amarillo); font-size: 14px; margin-bottom: 8px; }
-
-/* GARANTÍAS */
-.garantia-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.garantia-item { background: var(--gris-medio); border: 1px solid var(--gris-borde); padding: 16px; border-radius: 6px; text-align: center; }
-.garantia-icon { font-size: 32px; display: block; margin-bottom: 10px; }
-.garantia-item p       { font-size: 13px; color: var(--blanco); font-weight: 600; line-height: 1.4; }
-.garantia-item p span  { display: block; font-size: 12px; color: var(--blanco-suave); margin-top: 5px; font-weight: 400; }
-
-/* FAQ OBJECIONES */
-.faqs { display: flex; flex-direction: column; gap: 0; }
-.faq-item { border-bottom: 1px solid var(--gris-borde); padding: 18px 0; }
-.faq-item:last-child { border-bottom: none; }
-.faq-q { font-size: 15px; color: var(--blanco); font-weight: 600; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; }
-.faq-q::before { content: '?'; background: var(--verde); color: #000; font-size: 11px; font-weight: 900; width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-.faq-a { font-size: 14px; color: var(--blanco-suave); line-height: 1.6; padding-left: 28px; }
-
-/* CTA FINAL */
-.cta-final { text-align: center; }
-.cta-sub   { font-size: 15px; color: var(--blanco-suave); margin-bottom: 24px; line-height: 1.5; }
-.precio-final { font-family: var(--fuente-titulo); font-size: 52px; font-weight: 900; color: var(--amarillo); margin-bottom: 6px; }
-.precio-label { font-size: 13px; color: var(--blanco-suave); margin-bottom: 28px; }
-.cupos-alerta {
-  background: rgba(185,28,28,0.15);
-  border: 1px solid #b91c1c;
-  color: #fca5a5;
-  font-size: 13px;
-  font-weight: 600;
+.recipe-head {
   padding: 10px 16px;
+  background: var(--card2);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.recipe-body { padding: 14px 16px; }
+
+/* ─── TABLE ─── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin: 10px 0;
+}
+th {
+  background: var(--card2);
+  padding: 8px 12px;
+  text-align: left;
+  color: var(--g);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+}
+td {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--border2);
+  vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+
+/* ─── GRIDS ─── */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+@media(max-width:700px) { .grid2,.grid3 { grid-template-columns: 1fr; } }
+
+/* ─── AXIOM GRID ─── */
+.axioms {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 8px;
+  margin: 10px 0;
+}
+.axiom {
+  background: var(--card2);
+  border-radius: 7px;
+  padding: 9px 12px;
+  font-size: 0.83rem;
+  border-left: 2px solid var(--g);
+}
+.ax-num { font-family: 'JetBrains Mono', monospace; color: var(--g); font-weight: 700; font-size: 0.78rem; margin-bottom: 2px; }
+
+/* ─── BADGE ─── */
+.badge {
+  display: inline-block;
+  padding: 1px 8px;
   border-radius: 4px;
-  margin-bottom: 20px;
-  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.bv { background: rgba(61,255,160,0.12); color: var(--g); }
+.bf { background: rgba(255,107,107,0.12); color: var(--r); }
+.by { background: rgba(255,209,102,0.12); color: var(--y); }
+.bb { background: rgba(77,184,255,0.12); color: var(--b); }
+
+/* ─── EXAMPLE ─── */
+.ex {
+  background: rgba(77,184,255,0.05);
+  border: 1px solid rgba(77,184,255,0.18);
+  border-radius: 8px;
+  padding: 11px 15px;
+  margin: 9px 0;
+  font-size: 0.87rem;
+}
+.ex-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--b);
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
-/* FOOTER */
-.footer {
-  background: var(--gris-oscuro);
-  padding: 28px 0;
-  text-align: center;
-  border-top: 1px solid var(--gris-borde);
-  font-size: 12px;
-  color: var(--blanco-suave);
+/* ─── MEMORY CARD ─── */
+.mc {
+  background: linear-gradient(135deg, var(--card2), #16202e);
+  border: 1px solid #2a3650;
+  border-radius: 9px;
+  padding: 13px 16px;
+  margin: 8px 0;
 }
-.footer a { color: var(--verde); text-decoration: none; }
+.mc-q { font-weight: 600; color: var(--y); font-size: 0.88rem; margin-bottom: 5px; }
+.mc-a { font-size: 0.85rem; }
 
-/* MOBILE */
-@media (max-width: 420px) {
-  .oport-stats    { grid-template-columns: 1fr 1fr; }
-  .garantia-grid  { grid-template-columns: 1fr 1fr; }
-  .hero h1        { font-size: clamp(32px, 9vw, 42px); }
+/* ─── MEGA TABLE (recetario) ─── */
+.mega-table { font-size: 0.83rem; }
+.mega-table th { font-size: 0.78rem; }
+.mega-table td:first-child { font-weight: 600; color: var(--text); }
+.mega-table td:nth-child(2) { color: var(--muted); }
+
+/* ─── THEOREM BOX ─── */
+.theorem {
+  background: rgba(184,127,255,0.06);
+  border: 1px solid rgba(184,127,255,0.25);
+  border-radius: 9px;
+  padding: 13px 16px;
+  margin: 10px 0;
 }
+.theorem-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--p);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+ul { padding-left: 18px; }
+ul li { margin-bottom: 4px; font-size: 0.88rem; }
+p { margin-bottom: 7px; font-size: 0.88rem; }
+hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════
-  TOPBAR URGENCIA + COUNTDOWN
-═══════════════════════════════════════ -->
-<div class="topbar">
-  🔥 PRECIO DE LANZAMIENTO — vence en <span id="countdown">23:59:59</span> &nbsp;·&nbsp; <span>Solo quedan 5 cupos</span>
+<div class="shell">
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-title">📐 Álgebra v2.0</div>
+    <div class="logo-sub">Parcial completo · Fernández & de la Torre</div>
+  </div>
+  <div class="nav-group-title">Capítulo 3</div>
+  <a class="nav-item active" onclick="showTab('c3','g')"><div class="ni-dot" style="background:var(--g)"></div>Espacio Vectorial</a>
+  <a class="nav-item" onclick="showTab('c3b','g')"><div class="ni-dot" style="background:var(--g)"></div>Subespacio · SG</a>
+  <a class="nav-item" onclick="showTab('c3c','g')"><div class="ni-dot" style="background:var(--g)"></div>CL · LI · LD</a>
+  <a class="nav-item" onclick="showTab('c3d','g')"><div class="ni-dot" style="background:var(--g)"></div>Base · Dim · Coordenadas</a>
+  <a class="nav-item" onclick="showTab('c3e','g')"><div class="ni-dot" style="background:var(--g)"></div>Cambio de Base</a>
+  <div class="nav-group-title">Capítulo 4</div>
+  <a class="nav-item" onclick="showTab('c4a','b')"><div class="ni-dot" style="background:var(--b)"></div>Producto Interno · Normas</a>
+  <a class="nav-item" onclick="showTab('c4b','b')"><div class="ni-dot" style="background:var(--b)"></div>Ortogonalidad · Gram-Schmidt</a>
+  <a class="nav-item" onclick="showTab('c4c','b')"><div class="ni-dot" style="background:var(--b)"></div>Prod. Vectorial · Mixto · Área</a>
+  <div class="nav-group-title">Capítulo 5</div>
+  <a class="nav-item" onclick="showTab('c5a','p')"><div class="ni-dot" style="background:var(--p)"></div>Transformación Lineal</a>
+  <a class="nav-item" onclick="showTab('c5b','p')"><div class="ni-dot" style="background:var(--p)"></div>Matriz Asociada</a>
+  <a class="nav-item" onclick="showTab('c5c','p')"><div class="ni-dot" style="background:var(--p)"></div>Imagen · Rango</a>
+  <a class="nav-item" onclick="showTab('c5d','p')"><div class="ni-dot" style="background:var(--p)"></div>Núcleo · Nulidad · Teo. Dim.</a>
+  <a class="nav-item" onclick="showTab('c5e','p')"><div class="ni-dot" style="background:var(--p)"></div>Isomorfismos</a>
+  <div class="nav-group-title">Kit Parcial</div>
+  <a class="nav-item" onclick="showTab('rec','r')"><div class="ni-dot" style="background:var(--r)"></div>Recetario Completo</a>
+  <a class="nav-item" onclick="showTab('mem','y')"><div class="ni-dot" style="background:var(--y)"></div>Tarjetas Memoria Rápida</a>
+</nav>
+
+<!-- MAIN -->
+<div class="main">
+
+<div class="hero">
+  <h1>Álgebra Lineal — Resumen Parcial 2.0</h1>
+  <p class="subtitle">Todos los temas · Todas las demostraciones · Todos los tipos de ejercicios del documento</p>
+  <div class="chips">
+    <span class="chip chip-g">Cap. 3 — Espacios Vectoriales</span>
+    <span class="chip chip-b">Cap. 4 — Producto Interno</span>
+    <span class="chip chip-p">Cap. 5 — Transformaciones</span>
+    <span class="chip chip-r">Recetario de demostraciones</span>
+    <span class="chip chip-y">Tarjetas de memoria</span>
+  </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-  HERO
-═══════════════════════════════════════ -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <div class="tag">PARA PRINCIPIANTES · ARGENTINA</div>
+<div class="tab-bar">
+  <button class="tab-btn active-g" id="tab-c3" onclick="showTab('c3','g')">EV</button>
+  <button class="tab-btn" id="tab-c3b" onclick="showTab('c3b','g')">Subespacio</button>
+  <button class="tab-btn" id="tab-c3c" onclick="showTab('c3c','g')">CL · LI</button>
+  <button class="tab-btn" id="tab-c3d" onclick="showTab('c3d','g')">Base · Dim</button>
+  <button class="tab-btn" id="tab-c3e" onclick="showTab('c3e','g')">Cambio Base</button>
+  <button class="tab-btn" id="tab-c4a" onclick="showTab('c4a','b')">Prod. Interno</button>
+  <button class="tab-btn" id="tab-c4b" onclick="showTab('c4b','b')">Gram-Schmidt</button>
+  <button class="tab-btn" id="tab-c4c" onclick="showTab('c4c','b')">Prod. Vectorial</button>
+  <button class="tab-btn" id="tab-c5a" onclick="showTab('c5a','p')">TL</button>
+  <button class="tab-btn" id="tab-c5b" onclick="showTab('c5b','p')">Matriz TL</button>
+  <button class="tab-btn" id="tab-c5c" onclick="showTab('c5c','p')">Imagen</button>
+  <button class="tab-btn" id="tab-c5d" onclick="showTab('c5d','p')">Núcleo</button>
+  <button class="tab-btn" id="tab-c5e" onclick="showTab('c5e','p')">Isomorf.</button>
+  <button class="tab-btn" id="tab-rec" onclick="showTab('rec','r')">🔴 Recetario</button>
+  <button class="tab-btn" id="tab-mem" onclick="showTab('mem','y')">🟡 Memoria</button>
+</div>
 
-      <h1>Ganá dinero<br>reparando<br><span>computadoras</span></h1>
+<div class="content">
 
-      <p class="hero-sub">
-        Sin experiencia previa. Sin herramientas caras.<br>
-        Un oficio real con demanda constante. Arrancás hoy.
-      </p>
+<!-- ═══════════════════════════════════════════════════════
+     C3 — ESPACIO VECTORIAL
+═══════════════════════════════════════════════════════ -->
+<div class="section-panel visible" id="panel-c3">
+<div class="sh" style="color:var(--g)">3.2 — Espacio Vectorial (EV)</div>
+<div class="sh-sub">Definición · 8 Axiomas · Ejemplos · Proposiciones</div>
 
-      <div class="hero-price">
-        <span class="monto">$9.900</span>
-        <span class="moneda">ARS</span>
-        <span class="label">PAGO ÚNICO</span>
-      </div>
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--g)"></div>Definición 3.2.1 — Espacio Vectorial Real</div>
+<div class="def"><strong>Un espacio vectorial real</strong> es un sistema ⟨V, +, {Pₖ}⟩ formado por un conjunto V ≠ ∅, una operación suma + y productos por escalares k·, tales que se verifican los <strong>8 axiomas</strong> para todo ū, v̄, w̄ ∈ V y k, h ∈ ℝ.</div>
 
-      <a class="btn-wa" href="#" onclick="irWhatsApp(event)">
-        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.522.657 4.887 1.806 6.943L2 30l7.29-1.782A13.944 13.944 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="rgba(255,255,255,0.2)"/><path d="M22.5 19.5c-.3-.15-1.77-.873-2.044-.972-.274-.1-.474-.15-.674.15-.2.3-.774.972-.948 1.172-.174.2-.348.225-.648.075-.3-.15-1.267-.467-2.413-1.49-.892-.795-1.494-1.776-1.67-2.076-.174-.3-.018-.462.132-.61.135-.133.3-.347.45-.52.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.674-1.624-.923-2.224-.243-.585-.49-.506-.674-.515l-.574-.01a1.1 1.1 0 00-.798.375c-.274.3-1.047 1.024-1.047 2.498s1.072 2.899 1.222 3.099c.15.2 2.11 3.22 5.11 4.514.715.309 1.273.493 1.708.631.718.228 1.372.196 1.889.119.576-.086 1.772-.724 2.022-1.424.25-.7.25-1.3.175-1.424-.075-.124-.275-.199-.575-.349z" fill="#fff"/></svg>
-        Quiero inscribirme ahora
-      </a>
-    </div>
+<div class="axioms">
+  <div class="axiom"><div class="ax-num">EV1</div><b>Asociativa suma:</b> (ū+v̄)+w̄ = ū+(v̄+w̄)</div>
+  <div class="axiom"><div class="ax-num">EV2</div><b>Conmutativa suma:</b> ū+v̄ = v̄+ū</div>
+  <div class="axiom"><div class="ax-num">EV3</div><b>Vector neutro:</b> ∃ 0̄ ∈ V tal que ū+0̄=ū</div>
+  <div class="axiom"><div class="ax-num">EV4</div><b>Opuesto:</b> ∃ (−ū) ∈ V tal que (−ū)+ū=0̄</div>
+  <div class="axiom"><div class="ax-num">EV5</div><b>Distrib. vectores:</b> k·(ū+v̄) = k·ū + k·v̄</div>
+  <div class="axiom"><div class="ax-num">EV6</div><b>Distrib. escalares:</b> (k+h)·ū = k·ū + h·ū</div>
+  <div class="axiom"><div class="ax-num">EV7</div><b>Asoc. mixta:</b> (k·h)·ū = k·(h·ū)</div>
+  <div class="axiom"><div class="ax-num">EV8</div><b>Neutro producto:</b> 1·ū = ū</div>
+</div>
 
-    <!-- IMAGEN REAL DEL TÉCNICO -->
-    <div class="hero-img-wrap">
-      <img
-        src="https://res.cloudinary.com/dvtggnvgn/image/upload/v1777398716/xx-convertido-de-png_1_ningja.webp"
-        alt="Técnico reparando notebook — Curso de reparación de computadoras"
-        loading="eager"
-        width="640"
-        height="480"
-      >
-    </div>
-  </div>
-</section>
+<h2 style="color:var(--g)">Ejemplos de EV del libro</h2>
+<table>
+<tr><th>Espacio</th><th>Elementos</th><th>Suma</th><th>Vector 0̄</th><th>Opuesto −ū</th></tr>
+<tr><td>ℝⁿ</td><td>(x₁,...,xₙ)</td><td>componente a comp.</td><td>(0,...,0)</td><td>(−x₁,...,−xₙ)</td></tr>
+<tr><td>Mₘₓₙ</td><td>[aᵢⱼ]</td><td>[aᵢⱼ]+[bᵢⱼ]=[aᵢⱼ+bᵢⱼ]</td><td>[0] (matriz cero)</td><td>[−aᵢⱼ]</td></tr>
+<tr><td>C (funciones cont.)</td><td>f: ℝ→ℝ</td><td>(f+g)(x)=f(x)+g(x)</td><td>0(x)=0 para todo x</td><td>(−f)(x)=−f(x)</td></tr>
+<tr><td>{0}</td><td>Solo el 0</td><td>0+0=0</td><td>0</td><td>0</td></tr>
+</table>
 
-<!-- ═══════════════════════════════════════
-  PROBLEMA
-═══════════════════════════════════════ -->
-<section>
-  <div class="container">
-    <div class="sep"></div>
-    <h2 class="section-title">¿Te sentís<br><span>identificado?</span></h2>
+<div class="alert">{1} NO es EV porque 0 ∉ {1} (falla EV3). Siempre verificar que el 0̄ pertenezca al conjunto.</div>
 
-    <div class="problema-items">
-      <div class="problema-item">
-        <span class="icono">💸</span>
-        <p>No te alcanza la plata a fin de mes, por más que trabajés</p>
-      </div>
-      <div class="problema-item">
-        <span class="icono">❓</span>
-        <p>No sabés cómo generar ingresos extra fuera de tu trabajo</p>
-      </div>
-      <div class="problema-item">
-        <span class="icono">😤</span>
-        <p>Estás cansado de trabajos mal pagos que no te dan futuro</p>
-      </div>
-    </div>
+<h2 style="color:var(--g)">Proposición 3.2.1 — Propiedades que siempre valen</h2>
+<div class="def">Si V es EV, v̄ ∈ V y k ∈ ℝ, entonces:<br>
+i) 0 · v̄ = 0̄ &nbsp;&nbsp;&nbsp; ii) k · 0̄ = 0̄ &nbsp;&nbsp;&nbsp; iii) −(k·v̄) = (−k)·v̄ = k·(−v̄)<br>
+iv) k·v̄ = 0̄ implica k=0 ó v̄=0̄ &nbsp;&nbsp;&nbsp; v) si v̄+v̄=v̄ entonces v̄=0̄ &nbsp;&nbsp;&nbsp; vi) 0̄ es único</div>
 
-    <p class="problema-cierre">
-      Si dijiste sí a alguna de estas, seguí leyendo. Esto fue hecho exactamente para vos.
-    </p>
-  </div>
-</section>
+<div class="tip">Para demostrar que algo NO es EV: encontrá UN axioma que falle. El más rápido de verificar es EV3 (buscar si 0̄ ∈ V). Si no está → ¡no es EV, listo!</div>
+</div>
+</div>
 
-<!-- ═══════════════════════════════════════
-  OPORTUNIDAD
-═══════════════════════════════════════ -->
-<section>
-  <div class="container">
-    <div class="sep"></div>
-    <h2 class="section-title">La oportunidad que<br><span>casi nadie ve</span></h2>
+<!-- ═══════════════════════════════════════════════════════
+     C3B — SUBESPACIO
+═══════════════════════════════════════════════════════ -->
+<div class="section-panel" id="panel-c3b">
+<div class="sh" style="color:var(--g)">3.4 — Subespacio Vectorial (SEV)</div>
+<div class="sh-sub">Definición · Teorema 3.4.1 (3 condiciones) · SG[A] · Proposiciones</div>
 
-    <div class="oport-stats">
-      <div class="stat-card">
-        <div class="numero">+40M</div>
-        <div class="stat-label">computadoras en uso en Argentina</div>
-      </div>
-      <div class="stat-card">
-        <div class="numero">9/10</div>
-        <div class="stat-label">personas no saben cómo arreglarlas</div>
-      </div>
-      <div class="stat-card">
-        <div class="numero">$15K+</div>
-        <div class="stat-label">cobra un técnico por reparación</div>
-      </div>
-      <div class="stat-card">
-        <div class="numero">0</div>
-        <div class="stat-label">años de experiencia necesarios para empezar</div>
-      </div>
-    </div>
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--g)"></div>Definición 3.4.1</div>
+<div class="def"><strong>S es subespacio de V</strong> (S ◁ V) si S ⊂ V y S también es un espacio vectorial con las operaciones de V.</div>
+<div class="note">Notación: S ◁ V = "S es subespacio de V". Si no es subespacio: S ⋪ V</div>
 
-    <p class="oport-texto">
-      Hay <strong>miles de computadoras rotas</strong> esperando que alguien las arregle. La mayoría de la gente no tiene idea de cómo hacerlo. Ahí está tu oportunidad de generar ingresos — <strong>una reparación a la vez</strong>.
-    </p>
-  </div>
-</section>
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--g)">✅ Teorema 3.4.1 — RECETA: S ES subespacio (3 condiciones)</div>
+<div class="recipe-body">
+<ol class="steps">
+  <li><strong>Trabajar la expresión</strong> de los elementos de S: despejar variables dependientes en función de las libres</li>
+  <li><strong>Expresar como combinación lineal</strong> de vectores fijos: S = SG{v̄₁, v̄₂,...} — esto ya prueba que es subespacio por Teorema 3.4.3</li>
+  <li>Si el libro pide la demostración completa, demostrar las 3 tesis:
+    <ul style="margin-top:6px">
+      <li><span class="badge bv">Tesis 1</span> 0̄ ∈ S → tomar todos los parámetros = 0</li>
+      <li><span class="badge bv">Tesis 2</span> ū, v̄ ∈ S ⟹ ū+v̄ ∈ S (cerrado bajo suma)</li>
+      <li><span class="badge bv">Tesis 3</span> ū ∈ S, k ∈ ℝ ⟹ k·ū ∈ S (cerrado bajo prod. escalar)</li>
+    </ul>
+  </li>
+  <li>Concluir: S ◁ V</li>
+</ol>
+<div class="tip">Atajo máximo: si podés escribir S = SG{v̄₁,...,v̄ₚ} → por Teorema 3.4.3 → S es subespacio. Listo. No hace falta verificar las 3 condiciones.</div>
+</div>
+</div>
 
-<!-- ═══════════════════════════════════════
-  SOLUCIÓN
-═══════════════════════════════════════ -->
-<section>
-  <div class="container">
-    <div class="sep"></div>
-    <h2 class="section-title">Lo que vas a<br><span>lograr con el curso</span></h2>
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--r)">❌ RECETA: S NO ES subespacio (contraejemplo)</div>
+<div class="recipe-body">
+<p>Basta mostrar UNA cosa que falla:</p>
+<ol class="steps">
+  <li><strong>Verificar 0̄ ∉ S:</strong> sustituir (0,0,...,0) en la condición del conjunto. Si no la satisface → fin.</li>
+  <li><strong>Violar Tesis 2:</strong> tomar ū, v̄ ∈ S y mostrar que ū+v̄ ∉ S</li>
+  <li><strong>Violar Tesis 3:</strong> tomar ū ∈ S, un k ∈ ℝ y mostrar que k·ū ∉ S</li>
+</ol>
+<div class="ex">
+<div class="ex-title">Ejemplo del libro (Ej. 3.4.5)</div>
+U = {(x,y,z) | x−y+2z=4}. Verificar (0,0,0): 0−0+0=0 ≠ 4. Entonces 0̄ ∉ U → U ⋪ ℝ³. (Sistema no homogéneo → nunca es subespacio)
+</div>
+</div>
+</div>
 
-    <div class="bullets">
-      <div class="bullet">
-        <div class="bullet-icon">🚀</div>
-        <div class="bullet-text">
-          <strong>Empezás desde cero</strong>
-          <span>No necesitás experiencia previa ni conocimientos técnicos previos.</span>
-        </div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-icon">📋</div>
-        <div class="bullet-text">
-          <strong>Todo explicado paso a paso</strong>
-          <span>Sin suposiciones. Sin saltear pasos. Nada queda sin explicar.</span>
-        </div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-icon">🛠️</div>
-        <div class="bullet-text">
-          <strong>Casos reales, no teoría vacía</strong>
-          <span>Aprendés con problemas reales que te van a llegar de clientes.</span>
-        </div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-icon">🔍</div>
-        <div class="bullet-text">
-          <strong>Diagnóstico técnico profesional</strong>
-          <span>Identificás el problema, calculás el presupuesto y cobrás bien.</span>
-        </div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-icon">⚡</div>
-        <div class="bullet-text">
-          <strong>Acceso inmediato al pagar</strong>
-          <span>En minutos ya estás viendo el primer módulo. Sin esperas.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<h2 style="color:var(--g)">Proposición 3.4.1 y 3.4.2 — Regla de Sistemas</h2>
+<div class="theorem">
+<div class="theorem-title">Proposiciones de Sistemas</div>
+<p><span class="badge bv">SÍ es SEV</span> El conjunto solución de un sistema <strong>homogéneo</strong> (A·X=θ) SIEMPRE es subespacio de Mₙₓ₁.</p>
+<p style="margin-top:6px"><span class="badge bf">NO es SEV</span> El conjunto solución de un sistema <strong>no homogéneo</strong> (A·X=H, H≠θ) NUNCA es subespacio (porque 0̄ no lo satisface).</p>
+</div>
+</div>
 
-<!-- ═══════════════════════════════════════
-  CONTENIDO DEL CURSO
-═══════════════════════════════════════ -->
-<section>
-  <div class="container">
-    <div class="sep"></div>
-    <h2 class="section-title">Qué vas a<br><span>aprender</span></h2>
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--g)"></div>3.4.1 — Espacio Lineal Generado SG[B]</div>
+<div class="def"><strong>Definición 3.4.2:</strong> Dado B={ū₁,...,ūₙ} ⊂ V:<br>
+SG[B] = {v̄ ∈ V | ∃c₁,...,cₙ ∈ ℝ tales que c₁ū₁+...+cₙūₙ=v̄}<br>
+= todas las combinaciones lineales posibles de los vectores de B.</div>
 
-    <div class="modulos">
-      <div class="modulo">
-        <div class="modulo-num">01</div>
-        <div class="modulo-info">
-          <strong>Mantenimiento de PC y notebooks</strong>
-          <span>Limpieza, pasta térmica, ventilación · el servicio más pedido</span>
-        </div>
-      </div>
-      <div class="modulo">
-        <div class="modulo-num">02</div>
-        <div class="modulo-info">
-          <strong>Metal líquido, teclado y panel</strong>
-          <span>Técnica premium que diferencia tu servicio de la competencia</span>
-        </div>
-      </div>
-      <div class="modulo">
-        <div class="modulo-num">03</div>
-        <div class="modulo-info">
-          <strong>Bisagras y anclajes</strong>
-          <span>Una de las fallas más comunes en notebooks · fácil de aprender</span>
-        </div>
-      </div>
-      <div class="modulo">
-        <div class="modulo-num">04</div>
-        <div class="modulo-info">
-          <strong>Identificación de componentes electrónicos</strong>
-          <span>Sabés qué es cada pieza, qué hace y cómo reemplazarla</span>
-        </div>
-      </div>
-      <div class="modulo">
-        <div class="modulo-num">05</div>
-        <div class="modulo-info">
-          <strong>Estados ACPI y funcionamiento electrónico</strong>
-          <span>Dominás las fallas de sistema y comportamiento de componentes</span>
-        </div>
-      </div>
-      <div class="modulo">
-        <div class="modulo-num">06</div>
-        <div class="modulo-info">
-          <strong>IC de carga y diagnóstico avanzado</strong>
-          <span>Fallas de batería y carga · las reparaciones mejor pagadas</span>
-        </div>
-      </div>
-      <div class="modulo">
-        <div class="modulo-num">07</div>
-        <div class="modulo-info">
-          <strong>Software y sistema operativo</strong>
-          <span>Formateo e instalación de Windows y macOS · servicio muy pedido y fácil de aprender</span>
-        </div>
-      </div>
-      <div class="modulo">
-        <div class="modulo-num">08</div>
-        <div class="modulo-info">
-          <strong>Pantallas, teclados y periféricos</strong>
-          <span>Reemplazo de displays y accesorios · trabajo constante y bien pago</span>
-        </div>
-      </div>
-    </div>
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--b)">RECETA: Hallar SG[B] — encontrar la condición/ecuación del subespacio</div>
+<div class="recipe-body">
+<ol class="steps">
+  <li>Plantear c₁ū₁+...+cₙūₙ = (a,b,c,...) = vector genérico</li>
+  <li>Armar la matriz [ū₁|...|ūₙ|(a,b,c,...)] y escalonar</li>
+  <li>Para que existan los cᵢ se necesita rg(A)=rg(A*)</li>
+  <li>La condición que garantiza rg(A)=rg(A*) es la ecuación de SG[B]</li>
+</ol>
+<div class="ex">
+<div class="ex-title">Ejemplo del libro (Ej. 3.4.6)</div>
+B={(1,1,1),(2,1,0)} en ℝ³. Después de escalonar, la condición resulta: a−2b+c=0.<br>
+Por tanto SG[B] = {(a,b,c) ∈ ℝ³ | a−2b+c=0}
+</div>
+<div class="tip">Si después de escalonar la condición se cumple SIEMPRE (sin restricción), entonces SG[B] = el espacio completo (el conjunto genera todo el espacio).</div>
+</div>
+</div>
 
-    <div class="bonus-badge">
-      🎁 BONUS — PDF Guía de Diagnóstico Rápido para notebooks
-    </div>
-  </div>
-</section>
+<div class="theorem">
+<div class="theorem-title">Teorema 3.4.4</div>
+Si v̄ es combinación lineal de los vectores de S, entonces SG[S ∪ {v̄}] = SG[S]. Agregar un vector que ya es CL de los demás no amplía el espacio generado.
+</div>
+</div>
+</div>
 
-<!-- ═══════════════════════════════════════
-  TESTIMONIOS
-═══════════════════════════════════════ -->
-<section>
-  <div class="container">
-    <div class="sep"></div>
-    <h2 class="section-title">Lo que dicen<br><span>nuestros estudiantes</span></h2>
+<!-- ═══════════════════════════════════════════════════════
+     C3C — CL · LI · LD
+═══════════════════════════════════════════════════════ -->
+<div class="section-panel" id="panel-c3c">
+<div class="sh" style="color:var(--g)">3.3 y 3.5.1 — Combinación Lineal · LI · LD</div>
+<div class="sh-sub">Definiciones · Recetas completas · Lemas y Teoremas del libro</div>
 
-    <div class="testimonios">
-      <div class="testimonio">
-        <div class="estrellas">★★★★★</div>
-        <blockquote>"En la primera semana ya hice una reparación de bisagra. Cobré $12.000 y el curso me costó $9.900. Ya lo pagué solo."</blockquote>
-        <div class="autor">— Matías R., Mendoza</div>
-      </div>
-      <div class="testimonio">
-        <div class="estrellas">★★★★★</div>
-        <blockquote>"Pensé que iba a necesitar un año para aprender. Con el módulo 1 ya pude hacer mi primer mantenimiento a una vecina."</blockquote>
-        <div class="autor">— Lucía M., Córdoba</div>
-      </div>
-      <div class="testimonio">
-        <div class="estrellas">★★★★★</div>
-        <blockquote>"Lo mejor fue el módulo de diagnóstico. Me enseñó a cobrar lo que el trabajo vale, no tirar precios bajos como hacía antes."</blockquote>
-        <div class="autor">— Sebastián G., Buenos Aires</div>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--g)"></div>Combinación Lineal — Def. 3.3.1</div>
+<div class="def"><strong>v̄ es CL de {ū₁,...,ūₙ}</strong> si existen c₁,...,cₙ ∈ ℝ tales que: c₁·ū₁ + c₂·ū₂ + ... + cₙ·ūₙ = v̄</div>
 
-<!-- ═══════════════════════════════════════
-  SIN EXCUSAS
-═══════════════════════════════════════ -->
-<section>
-  <div class="container">
-    <div class="sep"></div>
-    <h2 class="section-title">Sin excusas para<br><span>no arrancar</span></h2>
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--g)">✅ RECETA: v̄ SÍ es CL de {ū₁,...,ūₙ}</div>
+<div class="recipe-body">
+<ol class="steps">
+  <li>Plantear la ecuación vectorial: c₁·ū₁ + ... + cₙ·ūₙ = v̄</li>
+  <li>Armar sistema componente a componente → forma matricial [ū₁|...|ūₙ] · X = v̄</li>
+  <li>Armar la matriz ampliada [ū₁|...|ūₙ|v̄] y escalonar (Gauss)</li>
+  <li>Si rg(A) = rg(A*) → sistema compatible → <span class="badge bv">v̄ SÍ es CL</span></li>
+  <li>Calcular los valores de c₁,...,cₙ</li>
+  <li><strong>VERIFICAR:</strong> sustituir y comprobar que c₁·ū₁+...+cₙ·ūₙ = v̄ ✓</li>
+</ol>
+<div class="ex">
+<div class="ex-title">Ejemplo 3.3.1 del libro</div>
+v̄=(5,3), ū₁=(1,2), ū₂=(3,−1). Sistema: c₁+3c₂=5 y 2c₁−c₂=3.<br>
+Escalonando: c₂=1, c₁=2. Verificación: 2·(1,2)+1·(3,−1)=(2,4)+(3,−1)=(5,3) ✓
+</div>
+</div>
+</div>
 
-    <div class="garantia-grid">
-      <div class="garantia-item">
-        <span class="garantia-icon">🧑‍🔧</span>
-        <p>Sin experiencia previa<span>El curso empieza desde lo más básico. Cero supuestos.</span></p>
-      </div>
-      <div class="garantia-item">
-        <span class="garantia-icon">🔩</span>
-        <p>Sin herramientas caras<span>Con equipos básicos alcanza para empezar a ganar.</span></p>
-      </div>
-      <div class="garantia-item">
-        <span class="garantia-icon">⏰</span>
-        <p>A tu propio ritmo<span>El contenido es tuyo. Lo ves cuando podés, las veces que querés.</span></p>
-      </div>
-      <div class="garantia-item">
-        <span class="garantia-icon">📲</span>
-        <p>Acceso inmediato<span>En cuanto pagás, ya tenés todo disponible. Sin esperas.</span></p>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--r)">❌ RECETA: v̄ NO es CL</div>
+<div class="recipe-body">
+<ol class="steps">
+  <li>Mismo procedimiento que arriba</li>
+  <li>Si rg(A) ≠ rg(A*) → sistema incompatible → <span class="badge bf">v̄ NO es CL</span></li>
+  <li>Concluir: no existen c₁,...,cₙ que satisfagan la ecuación</li>
+</ol>
+</div>
+</div>
 
-<!-- ═══════════════════════════════════════
-  FAQ / OBJECIONES
-═══════════════════════════════════════ -->
-<section>
-  <div class="container">
-    <div class="sep"></div>
-    <h2 class="section-title">Preguntas<br><span>frecuentes</span></h2>
+<div class="tip">0̄ SIEMPRE es CL de cualquier conjunto (tomando todos los cᵢ = 0). Proposición 3.3.1.</div>
+</div>
 
-    <div class="faqs">
-      <div class="faq-item">
-        <div class="faq-q">¿Cuánto tiempo hasta mi primer ingreso?</div>
-        <div class="faq-a">Con el módulo 1 ya podés hacer mantenimientos y cobrar. La mayoría de estudiantes logran su primer ingreso en la primera semana si aplican lo que aprenden.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">¿Necesito herramientas caras para empezar?</div>
-        <div class="faq-a">No. Con un destornillador de precisión y pinzas básicas ya empezás. La inversión inicial en herramientas es de $1.000-3.000 ARS máximo.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">¿Cómo accedo al curso después de pagar?</div>
-        <div class="faq-a">Escribís por WhatsApp, confirmamos tu pago y en minutos te mandamos el link de Google Drive con todo el contenido. Sin plataformas complicadas.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">¿Qué pasa si no entiendo algo del curso?</div>
-        <div class="faq-a">Tenés soporte directo por WhatsApp. Cualquier duda la respondemos personalmente. No estás solo.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">¿Hay garantía de devolución?</div>
-        <div class="faq-a">Si en los primeros 7 días sentís que el curso no es para vos, te devolvemos el dinero. Sin preguntas, sin vueltas.</div>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--g)"></div>Independencia / Dependencia Lineal — Def. 3.5.1</div>
+<div class="def">
+<strong>LI (linealmente independiente):</strong> c₁·v̄₁+...+cₙ·v̄ₙ=0̄ tiene única solución: c₁=...=cₙ=0 (solución trivial)<br><br>
+<strong>LD (linealmente dependiente):</strong> la misma ecuación tiene infinitas soluciones (existe algún cᵢ≠0)
+</div>
 
-<!-- ═══════════════════════════════════════
-  CTA FINAL
-═══════════════════════════════════════ -->
-<section class="cta-final" style="border-bottom:none;">
-  <div class="container">
-    <div class="sep" style="margin: 0 auto 20px;"></div>
-    <h2 class="section-title">¿Listo para<br><span>arrancar?</span></h2>
-    <p class="cta-sub">
-      Escribinos por WhatsApp y te contamos todo.<br>
-      Sin compromiso. Sin formularios largos.
-    </p>
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--b)">RECETA: Determinar si {v̄₁,...,v̄ₙ} es LI o LD</div>
+<div class="recipe-body">
+<ol class="steps">
+  <li>Plantear: c₁·v̄₁ + c₂·v̄₂ + ... + cₙ·v̄ₙ = 0̄</li>
+  <li>Armar el sistema homogéneo [v̄₁|...|v̄ₙ] · X = θ</li>
+  <li>Escalonar la matriz de coeficientes</li>
+  <li>Calcular nro de variables libres = n − rg(A)<br>
+      &nbsp;&nbsp;&nbsp;→ nro.vl = 0: única solución (trivial) → <span class="badge bv">LI</span><br>
+      &nbsp;&nbsp;&nbsp;→ nro.vl > 0: infinitas soluciones → <span class="badge bf">LD</span></li>
+  <li>Si LD: hallar una solución no trivial y escribir un vector como CL de los demás</li>
+</ol>
+<div class="ex">
+<div class="ex-title">Ejemplo 3.5.1 del libro (LI)</div>
+A={(1,1,1),(5,5,2),(3,2,1)}. Matriz escalonada tiene rg=3, nro.vl=0 → LI ✓
+</div>
+<div class="ex">
+<div class="ex-title">Ejemplo 3.5.2 del libro (LD)</div>
+B={(1,1,1),(3,2,1),(−3,−1,1)}. Matriz escalonada tiene rg=2, nro.vl=1 → LD.<br>
+Solución no trivial c₃=1: −3·(1,1,1)+2·(3,2,1)+1·(−3,−1,1)=(0,0,0) ✓
+</div>
+</div>
+</div>
 
-    <div class="cupos-alerta">
-      ⚠️ Solo quedan 5 cupos al precio de lanzamiento
-    </div>
+<h2 style="color:var(--g)">Lema 3.5.2 — Atajos rápidos para LD</h2>
+<div class="theorem">
+<div class="theorem-title">Lema 3.5.2</div>
+<p>1. Si <strong>0̄ ∈ T</strong> → T es LD. (El vector nulo en el conjunto → siempre LD)</p>
+<p style="margin-top:5px">2. Si {ū, v̄} ⊂ V → es LD ⟺ ū = k·v̄ para algún k ∈ ℝ (uno es múltiplo del otro)</p>
+</div>
+<div class="theorem">
+<div class="theorem-title">Teorema 3.5.1</div>
+Un conjunto S es LD ⟺ algún vector de S es CL de los demás. (Bidireccional: LD⟺hay un vector dependiente)
+</div>
+<div class="theorem">
+<div class="theorem-title">Teorema 3.5.2</div>
+Si se tienen más vectores que la dimensión del espacio → siempre LD. (p vectores en ℝⁿ con p>n → LD)
+</div>
+</div>
+</div>
 
-    <div class="precio-final">$9.900 ARS</div>
-    <p class="precio-label">Pago único · Acceso inmediato · Soporte por WhatsApp</p>
+<!-- ═══════════════════════════════════════════════════════
+     C3D — BASE Y DIMENSIÓN
+═══════════════════════════════════════════════════════ -->
+<div class="section-panel" id="panel-c3d">
+<div class="sh" style="color:var(--g)">3.5.2 — Base, Dimensión y Coordenadas</div>
+<div class="sh-sub">Definiciones · Proposiciones · Bases canónicas · Coordenadas</div>
 
-    <a class="btn-wa" href="#" onclick="irWhatsApp(event)">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.522.657 4.887 1.806 6.943L2 30l7.29-1.782A13.944 13.944 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="rgba(255,255,255,0.2)"/><path d="M22.5 19.5c-.3-.15-1.77-.873-2.044-.972-.274-.1-.474-.15-.674.15-.2.3-.774.972-.948 1.172-.174.2-.348.225-.648.075-.3-.15-1.267-.467-2.413-1.49-.892-.795-1.494-1.776-1.67-2.076-.174-.3-.018-.462.132-.61.135-.133.3-.347.45-.52.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.674-1.624-.923-2.224-.243-.585-.49-.506-.674-.515l-.574-.01a1.1 1.1 0 00-.798.375c-.274.3-1.047 1.024-1.047 2.498s1.072 2.899 1.222 3.099c.15.2 2.11 3.22 5.11 4.514.715.309 1.273.493 1.708.631.718.228 1.372.196 1.889.119.576-.086 1.772-.724 2.022-1.424.25-.7.25-1.3.175-1.424-.075-.124-.275-.199-.575-.349z" fill="#fff"/></svg>
-      Quiero inscribirme ahora
-    </a>
-  </div>
-</section>
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--g)"></div>Definición 3.5.2 — Base</div>
+<div class="def"><strong>α es base de V</strong> si y solo si:<br>
+(1) α ⊂ V &nbsp;&nbsp;&nbsp; (2) α es LI &nbsp;&nbsp;&nbsp; (3) SG[α] = V</div>
 
-<!-- ─── FAB ─── -->
-<a class="fab" href="#" onclick="irWhatsApp(event)" title="Inscribirme por WhatsApp" aria-label="Abrir WhatsApp">
-  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.522.657 4.887 1.806 6.943L2 30l7.29-1.782A13.944 13.944 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="rgba(255,255,255,0.2)"/><path d="M22.5 19.5c-.3-.15-1.77-.873-2.044-.972-.274-.1-.474-.15-.674.15-.2.3-.774.972-.948 1.172-.174.2-.348.225-.648.075-.3-.15-1.267-.467-2.413-1.49-.892-.795-1.494-1.776-1.67-2.076-.174-.3-.018-.462.132-.61.135-.133.3-.347.45-.52.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.674-1.624-.923-2.224-.243-.585-.49-.506-.674-.515l-.574-.01a1.1 1.1 0 00-.798.375c-.274.3-1.047 1.024-1.047 2.498s1.072 2.899 1.222 3.099c.15.2 2.11 3.22 5.11 4.514.715.309 1.273.493 1.708.631.718.228 1.372.196 1.889.119.576-.086 1.772-.724 2.022-1.424.25-.7.25-1.3.175-1.424-.075-.124-.275-.199-.575-.349z" fill="#fff"/></svg>
-</a>
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--g)">RECETA COMPLETA: Demostrar que α es BASE de V</div>
+<div class="recipe-body">
+<ol class="steps">
+  <li>Verificar α ⊂ V (los vectores pertenecen al espacio)</li>
+  <li>Demostrar LI: sistema homogéneo → solo solución trivial (escalonar, rg=n)</li>
+  <li>Demostrar SG[α]=V: mostrar que todo vector de V es CL de α → sistema compatible para todo vector genérico</li>
+  <li>Concluir: α es base de V, dim(V) = |α|</li>
+</ol>
+<div class="tip">Proposición 3.5.2 (atajo): Si dim(V)=n y tengo exactamente n vectores que SON LI → automáticamente es base (sin verificar generación). O viceversa: si tengo n vectores que GENERAN → también es base automáticamente.</div>
+</div>
+</div>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <p>© 2025 Curso Reparación de Computadoras · Argentina</p>
-  <p style="margin-top:6px;">Soporte:
-    <a href="https://wa.me/5492644116786" target="_blank" rel="noopener">WhatsApp</a>
-  </p>
-</footer>
+<div class="card">
+<div class="card-title">Bases canónicas del libro</div>
+<table>
+<tr><th>Espacio</th><th>Base canónica C</th><th>dim</th></tr>
+<tr><td>ℝ²</td><td>{(1,0),(0,1)}</td><td>2</td></tr>
+<tr><td>ℝ³</td><td>{(1,0,0),(0,1,0),(0,0,1)}</td><td>3</td></tr>
+<tr><td>ℝⁿ</td><td>{ē₁,...,ēₙ} con ēᵢ = vector con 1 en pos i, resto 0</td><td>n</td></tr>
+<tr><td>M₁ₓ₂</td><td>{[1 0],[0 1]}</td><td>2</td></tr>
+<tr><td>M₂ₓ₁</td><td>{col(1,0), col(0,1)}</td><td>2</td></tr>
+<tr><td>M₂ₓ₂</td><td>4 matrices con un 1 y resto 0</td><td>4</td></tr>
+<tr><td>diag(2)</td><td>{[1 0;0 0],[0 0;0 1]}</td><td>2</td></tr>
+<tr><td>{0̄}</td><td>α = ∅</td><td>0</td></tr>
+</table>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--g)"></div>Coordenadas — Def. 3.5.6</div>
+<div class="def">Si α={v̄₁;...;v̄ₙ} es base ordenada de V y ū=k₁·v̄₁+...+kₙ·v̄ₙ, entonces:<br>
+• <strong>Coordenadas:</strong> k₁, k₂, ..., kₙ<br>
+• <strong>Vector de coordenadas:</strong> (ū)α = (k₁,...,kₙ)<br>
+• <strong>Matriz de coordenadas:</strong> [ū]α = columna con k₁,...,kₙ</div>
+
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--y)">RECETA: Hallar coordenadas de ū respecto a base α</div>
+<div class="recipe-body">
+<ol class="steps">
+  <li>Plantear: k₁·v̄₁ + k₂·v̄₂ + ... + kₙ·v̄ₙ = ū</li>
+  <li>Resolver el sistema de ecuaciones (igual que CL)</li>
+  <li>Los kᵢ hallados son las coordenadas: (ū)α = (k₁,...,kₙ)</li>
+</ol>
+<div class="ex">
+<div class="ex-title">Ejemplo 3.5.11 del libro</div>
+En ℝ², α={(1,1);(−1,1)}, w̄=(1,5).<br>
+Sistema: c₁−c₂=1 y c₁+c₂=5 → c₁=3, c₂=2.<br>
+(w̄)α = (3,2). Verificar: 3·(1,1)+2·(−1,1) = (3,3)+(−2,2) = (1,5) ✓
+</div>
+<div class="tip">Con la base canónica: (ū)C = ū (las coordenadas son las componentes habituales).</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     C3E — CAMBIO DE BASE
+═══════════════════════════════════════════════════════ -->
+<div class="section-panel" id="panel-c3e">
+<div class="sh" style="color:var(--g)">3.5.3 — Cambio de Base</div>
+<div class="sh-sub">Matriz de paso · Teoremas 3.5.5 y 3.5.6</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--g)"></div>Matriz de Paso — Def. 3.5.7</div>
+<div class="def"><strong>Definición 3.5.7:</strong> Sean α={ū₁;...;ūₙ} y β={v̄₁;...;v̄ₙ} bases ordenadas de V.<br>
+La <strong>Matriz de Paso</strong> de α a β es la matriz MP ∈ Mₙₓₙ cuyas columnas son [ūᵢ]β (las coordenadas de cada vector de α expresadas en la base β).</div>
+<div class="formula">MP = [ [ū₁]β | [ū₂]β | ... | [ūₙ]β ]</div>
+
+<div class="theorem">
+<div class="theorem-title">Teorema 3.5.5 — Cómo usar MP</div>
+Para todo w̄ ∈ V: <strong>[w̄]β = MP · [w̄]α</strong><br>
+(Para pasar de coordenadas en α a coordenadas en β: multiplicar por MP)
+</div>
+
+<div class="theorem">
+<div class="theorem-title">Teorema 3.5.6 — Inversa de MP</div>
+Si MP es la matriz de paso de α a β, entonces inv(MP) es la matriz de paso de β a α.
+</div>
+
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--y)">RECETA: Cambio de base (Ejemplo 3.5.12)</div>
+<div class="recipe-body">
+<ol class="steps">
+  <li>Para cada ūᵢ de α: resolver el sistema c₁·v̄₁+...+cₙ·v̄ₙ=ūᵢ → hallar [ūᵢ]β</li>
+  <li>Armar MP poniendo los [ūᵢ]β como columnas (se puede resolver simultáneamente con la misma matriz A)</li>
+  <li>Para hallar [w̄]β dado [w̄]α: calcular [w̄]β = MP · [w̄]α</li>
+  <li>Para hallar w̄ en ℝⁿ: expresar usando cualquiera de las dos bases</li>
+</ol>
+<div class="ex">
+<div class="ex-title">Ejemplo 3.5.12 del libro</div>
+α={(4,3);(−5,5)}, β={(1,2);(−2,1)} en ℝ².<br>
+Resolviendo: [ū₁]β=(2,−1), [ū₂]β=(1,3) → MP=[[2,1],[−1,3]]<br>
+Dado [w̄]α=(−2,5): [w̄]β = [[2,1],[−1,3]]·(−2,5) = (1,17) → w̄=(−33,19)
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     C4A — PRODUCTO INTERNO Y NORMAS
+═══════════════════════════════════════════════════════ -->
+<div class="section-panel" id="panel-c4a">
+<div class="sh" style="color:var(--b)">Cap. 4 — Producto Interno y Normas</div>
+<div class="sh-sub">Producto euclídeo · Propiedades · Normas 1, 2, ∞ · Unitarización · Ángulo · Cauchy-Schwarz</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--b)"></div>4.1 — Producto Euclídeo (Producto Interno)</div>
+<div class="def"><strong>Definición 4.1.1:</strong> Si β es base ordenada de V, el <strong>producto euclídeo</strong> de ū y v̄ es:<br>
+⟨ū,v̄⟩β = [ū]ᵀβ · [v̄]β = u₁v₁ + u₂v₂ + ... + uₙvₙ</div>
+<div class="formula">⟨ū,v̄⟩ = Σᵢ uᵢ·vᵢ   (suma de productos componente a componente)</div>
+<div class="note">El producto euclídeo depende de la base elegida. Con la base canónica: simplemente multiplicar componentes y sumar.</div>
+
+<div class="ex">
+<div class="ex-title">Ejemplo 4.1.1 del libro</div>
+ū=(2,5,3), v̄=(1,3,3) en ℝ³ (base canónica):<br>
+⟨ū,v̄⟩C = 2·1 + 5·3 + 3·3 = 2+15+9 = 26<br>
+Con base β={(1,2,0);(0,1,3)}: (ū)β=(2,1), (v̄)β=(1,1) → ⟨ū,v̄⟩β = 2·1+1·1 = 3 (resultado diferente)
+</div>
+
+<h2 style="color:var(--b)">7 Propiedades (Teoremas 4.1.1 y 4.1.2)</h2>
+<table>
+<tr><th>#</th><th>Nombre</th><th>Fórmula</th></tr>
+<tr><td>P1</td><td>Simetría</td><td>⟨ū,v̄⟩ = ⟨v̄,ū⟩</td></tr>
+<tr><td>P2</td><td>Aditividad 1er factor</td><td>⟨ū+v̄,w̄⟩ = ⟨ū,w̄⟩+⟨v̄,w̄⟩</td></tr>
+<tr><td>P3</td><td>Homogeneidad</td><td>⟨k·ū,v̄⟩ = k·⟨ū,v̄⟩</td></tr>
+<tr><td>P4</td><td>Positividad</td><td>⟨v̄,v̄⟩ ≥ 0; = 0 solo si v̄=0̄</td></tr>
+<tr><td>P5</td><td>Con vector nulo</td><td>⟨0̄,ū⟩ = ⟨ū,0̄⟩ = 0</td></tr>
+<tr><td>P6</td><td>Aditividad 2do factor</td><td>⟨ū,v̄+w̄⟩ = ⟨ū,v̄⟩+⟨ū,w̄⟩</td></tr>
+<tr><td>P7</td><td>Homogeneidad 2do</td><td>⟨ū,k·v̄⟩ = k·⟨ū,v̄⟩</td></tr>
+</table>
+</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--b)"></div>4.2 — Normas</div>
+<div class="def"><strong>Norma</strong> es una función µ:V→ℝ que satisface: N1) µ(ū)≥0 (=0 solo si ū=0̄); N2) µ(k·ū)=|k|·µ(ū); N3) µ(ū+v̄)≤µ(ū)+µ(v̄) [desigualdad triangular]</div>
+
+<div class="grid2">
+<div>
+<h2 style="color:var(--b)">Las 3 Normas frecuentes</h2>
+<div class="formula">‖(ū)β‖₁ = |c₁| + |c₂| + ... + |cₙ|    (suma de valores absolutos)
+
+‖(ū)β‖₂ = √(c₁² + c₂² + ... + cₙ²)    (euclídea)
+
+‖(ū)β‖∞ = máx{|c₁|, |c₂|, ..., |cₙ|}   (Tchebychev)</div>
+<div class="note">donde (cᵢ) son las coordenadas de ū respecto a la base β dada.</div>
+</div>
+<div>
+<h2 style="color:var(--b)">Vector Unitario — Def. 4.2.3</h2>
+<div class="def">ū es <strong>unitario</strong> si ‖ū‖ = 1.<br>
+Para unitarizar cualquier vector ū≠0̄:</div>
+<div class="formula">ê₁ = ū/‖ū‖    (positivo)
+ê₂ = −ū/‖ū‖   (negativo)</div>
+<div class="tip">De cualquier vector no nulo se obtienen EXACTAMENTE 2 vectores unitarios: ū/‖ū‖ y −ū/‖ū‖.</div>
+</div>
+</div>
+
+<div class="ex">
+<div class="ex-title">Ejemplo 4.2.1 del libro</div>
+P={x+y+z=0}, β={(1,2,0),(0,1,3)}, ū=(2,5,3), [ū]β=(2,1):<br>
+‖(ū)β‖₁ = |2|+|1| = 3 &nbsp;&nbsp; ‖(ū)β‖₂ = √(4+1) = √5 &nbsp;&nbsp; ‖(ū)β‖∞ = máx{2,1} = 2
+</div>
+
+<h2 style="color:var(--b)">Ángulo entre vectores — Def. 4.2.4</h2>
+<div class="formula">cos(θ) = ⟨ū,v̄⟩β / (‖(ū)β‖₂ · ‖(v̄)β‖₂)</div>
+<div class="tip">ū ⊥ v̄ (ortogonales) ⟺ ⟨ū,v̄⟩ = 0 ⟺ θ = 90°</div>
+
+<div class="theorem">
+<div class="theorem-title">Teorema 4.2.2 — Desigualdad de Cauchy-Schwarz</div>
+Para todo ū,v̄ ∈ V: &nbsp;&nbsp; |⟨ū,v̄⟩β| ≤ ‖(ū)β‖₂ · ‖(v̄)β‖₂
+</div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     C4B — ORTOGONALIDAD Y GRAM-SCHMIDT
+═══════════════════════════════════════════════════════ -->
+<div class="section-panel" id="panel-c4b">
+<div class="sh" style="color:var(--b)">4.3 y 4.4 — Ortogonalidad y Gram-Schmidt</div>
+<div class="sh-sub">Conjuntos ortogonales · Ortonormales · Proyección ortogonal · Proceso Gram-Schmidt</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--b)"></div>Ortogonal vs Ortonormal</div>
+<table>
+<tr><th>Tipo</th><th>Condición</th><th>Lema relacionado</th></tr>
+<tr><td><strong>Ortogonal</strong></td><td>⟨v̄ᵢ,v̄ⱼ⟩ = 0 para todo i≠j</td><td rowspan="2">Teorema 4.3.1: ortogonal y sin 0̄ → automáticamente LI</td></tr>
+<tr><td><strong>Ortonormal</strong></td><td>⟨v̄ᵢ,v̄ⱼ⟩ = 0 si i≠j, y ⟨v̄ᵢ,v̄ᵢ⟩ = 1 (unitarios)</td></tr>
+</table>
+<div class="tip">Verificar que un conjunto es ortogonal = calcular todos los productos ⟨v̄ᵢ,v̄ⱼ⟩ para i≠j y ver que sean 0.</div>
+
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--b)">RECETA: Verificar si β es BASE ORTONORMAL</div>
+<div class="recipe-body">
+<ol class="steps">
+  <li>Calcular ⟨v̄ᵢ,v̄ⱼ⟩ = 0 para todo i≠j → ortogonal</li>
+  <li>Calcular ‖v̄ᵢ‖ = 1 para todo i → unitarios</li>
+  <li>Si cumple 1 y 2: conjunto ortonormal → por Teo. 4.3.1 es LI → si tiene dim(V) vectores → es base</li>
+  <li>Verificar que los vectores ∈ V (cumplan la ecuación del subespacio)</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--b)"></div>Proyección Ortogonal</div>
+
+<div class="grid2">
+<div>
+<div class="def"><strong>Proyección sobre vector unitario v̄ (‖v̄‖=1):</strong></div>
+<div class="formula">Proyv̄(ū) = ⟨ū,v̄⟩ · v̄</div>
+<div class="def"><strong>Si v̄ no es unitario (general):</strong></div>
+<div class="formula">Proyv̄(ū) = (⟨ū,v̄⟩/‖v̄‖²) · v̄</div>
+</div>
+<div>
+<div class="def"><strong>Proyección sobre W = SG{v̄₁,v̄₂} (ortonormales):</strong></div>
+<div class="formula">ProyW(ū) = ⟨ū,v̄₁⟩·v̄₁ + ⟨ū,v̄₂⟩·v̄₂</div>
+<p style="font-size:0.83rem;margin-top:5px;color:var(--muted)">El complemento ortogonal: w̄ = ū − ProyW(ū) es ⊥ a todo elemento de W</p>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--b)"></div>4.4.4 — Proceso de Gram-Schmidt</div>
+<p style="font-size:0.88rem; color:var(--muted); margin-bottom:12px">Dado α={ū₁,...,ūₙ} LI, construir β={v̄₁,...,v̄ₙ} ortonormal con SG[α]=SG[β]</p>
+
+<div class="formula">PASO 1:  w̄₁ = ū₁
+         v̄₁ = w̄₁ / ‖w̄₁‖
+
+PASO 2:  w̄₂ = ū₂ − ⟨ū₂,v̄₁⟩·v̄₁
+         v̄₂ = w̄₂ / ‖w̄₂‖
+
+PASO 3:  w̄₃ = ū₃ − ⟨ū₃,v̄₁⟩·v̄₁ − ⟨ū₃,v̄₂⟩·v̄₂
+         v̄₃ = w̄₃ / ‖w̄₃‖
+
+PASO i:  w̄ᵢ = ūᵢ − Σₖ₌₁ⁱ⁻¹ ⟨ūᵢ,v̄ₖ⟩·v̄ₖ
+         v̄ᵢ = w̄ᵢ / ‖w̄ᵢ‖</div>
+
+<div class="tip">Cada w̄ᵢ = vector original MENOS sus proyecciones sobre todos los anteriores ya ortogonalizados y normalizados. Si en algún paso w̄ᵢ=0̄, los vectores originales eran LD y no se puede continuar.</div>
+
+<div class="ex">
+<div class="ex-title">Ejemplo 4.4.5 del libro</div>
+α={(−1,1,0),(−1,0,1)} base de A={x+y+z=0}:<br>
+Paso 1: ‖ū₁‖=√2, v̄₁=(−1/√2, 1/√2, 0)<br>
+Paso 2: ⟨ū₂,v̄₁⟩=1/√2 → w̄₂=(−1,0,1)−(1/√2)·v̄₁=(−1/2,−1/2,1) → ‖w̄₂‖=√6/2<br>
+v̄₂=(−1/√6,−1/√6,2/√6). Base ortonormal β={v̄₁,v̄₂} ✓
+</div>
+
+<div class="alert">El proceso Gram-Schmidt SOLO funciona con vectores LI. Si el conjunto es LD, en algún paso w̄ᵢ=0̄ y hay que parar.</div>
+</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--b)"></div>Coordenadas con base ortonormal — Teorema 4.4.1</div>
+<div class="theorem">
+<div class="theorem-title">Teorema 4.4.1 — Atajo para coordenadas</div>
+Si β={v̄₁;...;v̄ₙ} es base <strong>ortonormal</strong>, entonces las coordenadas de ū se calculan directamente:<br>
+<strong>(ū)β = (⟨ū,v̄₁⟩, ⟨ū,v̄₂⟩, ..., ⟨ū,v̄ₙ⟩)</strong>
+</div>
+<div class="tip">Solo válido para bases ORTONORMALES. Si la base no es ortonormal, hay que resolver el sistema habitual.</div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     C4C — PRODUCTO VECTORIAL, MIXTO Y ÁREA/VOLUMEN
+═══════════════════════════════════════════════════════ -->
+<div class="section-panel" id="panel-c4c">
+<div class="sh" style="color:var(--b)">4.5-4.7 — Producto Vectorial · Mixto · Área · Volumen</div>
+<div class="sh-sub">Solo aplica en ℝ³</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--b)"></div>4.5 — Producto Vectorial ū × v̄</div>
+<div class="def"><strong>Def. 4.5.1:</strong> ū × v̄ es el vector tal que: (1) ‖ū×v̄‖ = ‖ū‖·‖v̄‖·sen(α); (2) perpendicular al plano de ū y v̄; (3) sentido del "tirabuzón".</div>
+
+<div class="formula">ū×v̄ = det | ē₁  ē₂  ē₃ |    con ū=(u₁,u₂,u₃), v̄=(v₁,v₂,v₃)
+           | u₁  u₂  u₃ |
+           | v₁  v₂  v₃ |
+
+Expandiendo por la primera fila:
+ū×v̄ = (u₂v₃−u₃v₂, u₃v₁−u₁v₃, u₁v₂−u₂v₁)</div>
+
+<div class="ex">
+<div class="ex-title">Ejemplo 4.5.1 del libro</div>
+ū=(0,1,−1), v̄=(1,2,0):<br>
+w̄=ū×v̄: comp₁=1·0−(−1)·2=2, comp₂=−(0·0−(−1)·1)=−1, comp₃=0·2−1·1=−1<br>
+w̄=(2,−1,−1). Verificar: ⟨w̄,ū⟩=0−1+1=0 ✓, ⟨w̄,v̄⟩=2−2+0=0 ✓
+</div>
+
+<h2 style="color:var(--b)">Propiedades del producto vectorial (Teorema 4.5.1)</h2>
+<table>
+<tr><th>Propiedad</th><th>Fórmula</th></tr>
+<tr><td>V1 Anticonmutativa</td><td>ū×v̄ = −(v̄×ū)</td></tr>
+<tr><td>V2 Homogeneidad</td><td>λ(ū×v̄) = (λū)×v̄ = ū×(λv̄)</td></tr>
+<tr><td>V3 Distributiva</td><td>w̄×(ū+v̄) = w̄×ū + w̄×v̄</td></tr>
+<tr><td>V4 Con vector nulo</td><td>ū×0̄ = 0̄</td></tr>
+<tr><td>V5 Con sí mismo</td><td>ū×ū = 0̄</td></tr>
+<tr><td>V6 Ortogonalidad</td><td>⟨ū,ū×v̄⟩=0 y ⟨v̄,ū×v̄⟩=0</td></tr>
+</table>
+
+<div class="grid3">
+<div class="note">ē₁×ē₂=ē₃<br>ē₂×ē₃=ē₁<br>ē₃×ē₁=ē₂<br>(sentido antihorario)</div>
+<div class="alert">ē₂×ē₁=−ē₃<br>ē₃×ē₂=−ē₁<br>ē₁×ē₃=−ē₂<br>(sentido horario)</div>
+<div class="tip">Prop. 4.5.2:<br>ū∥v̄ ⟺ ū×v̄=0̄<br>(paralelos/colineales ⟺ prod. vectorial nulo)</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--b)"></div>4.6 — Producto Mixto ⟨ū×v̄, w̄⟩</div>
+<div class="formula">⟨ū×v̄, w̄⟩ = det | u₁ u₂ u₃ |
+                   | v₁ v₂ v₃ |
+                   | w₁ w₂ w₃ |</div>
+<div class="theorem">
+<div class="theorem-title">Proposición 4.6.1</div>
+Tres vectores no nulos y no paralelos son coplanares ⟺ su producto mixto = 0.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--b)"></div>4.7 — Área y Volumen</div>
+<div class="grid2">
+<div>
+<div class="def"><strong>Área del paralelogramo</strong> (ū,v̄ ∈ ℝ²):</div>
+<div class="formula">A = |det[u₁ u₂; v₁ v₂]|</div>
+<div class="ex">
+<div class="ex-title">Ejemplo 4.7.1</div>
+ū=(1,2), v̄=(5,1):<br>
+A = |1·1−2·5| = |1−10| = 9
+</div>
+</div>
+<div>
+<div class="def"><strong>Volumen del paralelepípedo</strong> (ū,v̄,w̄ ∈ ℝ³):</div>
+<div class="formula">V = |⟨ū×v̄,w̄⟩| = |det[ū; v̄; w̄]|</div>
+<div class="ex">
+<div class="ex-title">Ejemplo 4.7.2</div>
+ū=(1,1,0), v̄=(2,−1,0), w̄=(2,2,4):<br>
+V = |4·C₃₃| = |4·(−3)| = 12
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     C5A — TRANSFORMACIONES LINEALES
+═══════════════════════════════════════════════════════ -->
+<div class="section-panel" id="panel-c5a">
+<div class="sh" style="color:var(--p)">5.2 — Transformaciones Lineales (TL)</div>
+<div class="sh-sub">Definición · Receta de verificación · Ejemplos del libro · Efectos geométricos</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--p)"></div>Definición 5.2.1</div>
+<div class="def"><strong>T: V→W es TL</strong> si para todo ū,v̄ ∈ V y h ∈ ℝ:
+<div class="formula" style="color:var(--p)">T(ū + h·v̄) = T(ū) + h·T(v̄)</div>
+Equivalentemente (dos condiciones por separado):<br>
+(1) <strong>Aditividad:</strong> T(ū+v̄) = T(ū)+T(v̄)<br>
+(2) <strong>Homogeneidad:</strong> T(k·ū) = k·T(ū)</div>
+
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--g)">✅ RECETA: Demostrar que T ES TL</div>
+<div class="recipe-body">
+<ol class="steps">
+  <li>Tomar ū=(x₁,y₁,...), v̄=(x₂,y₂,...) ∈ V arbitrarios y h ∈ ℝ arbitrario</li>
+  <li>Calcular ū+h·v̄ = (x₁+hx₂, y₁+hy₂,...) y luego T(ū+h·v̄)</li>
+  <li>Calcular T(ū) y T(v̄) por separado, luego T(ū)+h·T(v̄)</li>
+  <li>Mostrar que los resultados de (2) y (3) son iguales → <span class="badge bv">ES TL</span></li>
+</ol>
+<div class="ex">
+<div class="ex-title">Ejemplo 5.2.1 del libro — R(x,y)=(−y,x)</div>
+ū=(x₁,y₁), w̄=(x₂,y₂), k ∈ ℝ:<br>
+R(ū+kw̄) = R(x₁+kx₂, y₁+ky₂) = (−y₁−ky₂, x₁+kx₂)<br>
+R(ū)+k·R(w̄) = (−y₁,x₁)+k(−y₂,x₂) = (−y₁−ky₂, x₁+kx₂) ✓
+</div>
+</div>
+</div>
+
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--r)">❌ RECETA: Demostrar que T NO ES TL</div>
+<div class="recipe-body">
+<p>Basta un contraejemplo. Estrategias por orden de velocidad:</p>
+<ol class="steps">
+  <li><strong>Más rápido:</strong> Calcular T(0̄). Si T(0̄) ≠ 0̄ → NO es TL (Teorema 5.2.1)</li>
+  <li>Encontrar ū,v̄ con T(ū+v̄) ≠ T(ū)+T(v̄) (violar aditividad)</li>
+  <li>Encontrar ū,k con T(k·ū) ≠ k·T(ū) (violar homogeneidad)</li>
+</ol>
+<div class="ex">
+<div class="ex-title">Ejemplo 5.2.2 del libro — S(x,y)=(x−3,y+2) NO es TL</div>
+S(0,0) = (−3,2) ≠ (0,0). Como T(0̄)≠0̄ → NO es TL. Listo.
+</div>
+<div class="alert">Cuidado: T(0̄)=0̄ NO garantiza que sea TL (el recíproco no vale). Solo el caso negativo es concluyente.</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--p)"></div>Ejemplos importantes del libro</div>
+<table>
+<tr><th>Nombre</th><th>Definición</th><th>¿TL?</th></tr>
+<tr><td>Nula</td><td>Θ(v̄)=0̄</td><td><span class="badge bv">SÍ</span></td></tr>
+<tr><td>Identidad</td><td>I(v̄)=v̄</td><td><span class="badge bv">SÍ</span></td></tr>
+<tr><td>Proyección</td><td>T(x,y)=(x,y,0)</td><td><span class="badge bv">SÍ</span></td></tr>
+<tr><td>Matricial</td><td>T(X)=A·X</td><td><span class="badge bv">SÍ</span></td></tr>
+<tr><td>Traslación</td><td>H(X)=A·X+B (B≠0)</td><td><span class="badge bf">NO</span></td></tr>
+<tr><td>Traslación</td><td>S(x,y)=(x−3,y+2)</td><td><span class="badge bf">NO</span></td></tr>
+</table>
+
+<h2 style="color:var(--p)">Efectos geométricos en ℝ² (Sección 5.5)</h2>
+<table>
+<tr><th>Transformación</th><th>Fórmula</th><th>Matriz</th></tr>
+<tr><td>Rotación ángulo α</td><td>(x cosα−y sinα, x sinα+y cosα)</td><td>[cosα −sinα; sinα cosα]</td></tr>
+<tr><td>Reflexión eje x</td><td>(x,−y)</td><td>[1 0; 0 −1]</td></tr>
+<tr><td>Reflexión eje y</td><td>(−x,y)</td><td>[−1 0; 0 1]</td></tr>
+<tr><td>Reflexión y=x</td><td>(y,x)</td><td>[0 1; 1 0]</td></tr>
+<tr><td>Proyección sobre eje x</td><td>(x,0)</td><td>[1 0; 0 0]</td></tr>
+<tr><td>Proyección sobre eje y</td><td>(0,y)</td><td>[0 0; 0 1]</td></tr>
+<tr><td>Identidad</td><td>(x,y)</td><td>[1 0; 0 1]</td></tr>
+<tr><td>Escala factor k</td><td>(kx,ky)</td><td>[k 0; 0 k]</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     C5B — MATRIZ ASOCIADA
+═══════════════════════════════════════════════════════ -->
+<div class="section-panel" id="panel-c5b">
+<div class="sh" style="color:var(--p)">5.3-5.4 — Transformación Matricial y Matriz Asociada</div>
+<div class="sh-sub">Definición · Teorema 5.4.1 · Cómo hallar la matriz</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--p)"></div>Def. 5.3.1 — Transformación Matricial</div>
+<div class="def">T: Mₙₓ₁→Mₚₓ₁ definida por <strong>T(X) = A·X</strong> (A ∈ Mₚₓₙ) es una transformación matricial. Toda transformación matricial ES TL (Teorema 5.3.1).</div>
+
+<div class="theorem">
+<div class="theorem-title">Teorema 5.4.1 — Matriz Asociada a T</div>
+Si T: V→W es TL, α={v̄₁,...,v̄ₙ} base de V, β={ū₁,...,ūₚ} base de W, entonces:<br>
+<strong>A = [[T(v̄₁)]β | [T(v̄₂)]β | ... | [T(v̄ₙ)]β]</strong><br>
+(Las columnas son las imágenes de los vectores de la base α, expresadas en β)
+</div>
+
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--p)">RECETA: Hallar la matriz asociada [T]</div>
+<div class="recipe-body">
+<ol class="steps">
+  <li>Identificar la base α del dominio (si no se especifica: base canónica)</li>
+  <li>Calcular T(ē₁), T(ē₂), ..., T(ēₙ) (imágenes de cada vector de la base)</li>
+  <li>Expresar cada imagen en la base β del codominio (si es canónica: son las componentes directamente)</li>
+  <li>[T] = [T(ē₁) | T(ē₂) | ... | T(ēₙ)] (columnas = imágenes)</li>
+</ol>
+<div class="ex">
+<div class="ex-title">Ejemplo 5.4.2 del libro — R(x,y)=(−y,x)</div>
+R(1,0)=(0,1), R(0,1)=(−1,0)<br>
+[R] = [[0,−1],[1,0]] = [[R(1,0)] | [R(0,1)]]
+</div>
+<div class="ex">
+<div class="ex-title">Ejemplo 5.4.3 — F(x,y,z)=(2x−y, y−2z, x−y−z)</div>
+F(1,0,0)=(2,0,1), F(0,1,0)=(−1,1,−1), F(0,0,1)=(0,−2,−1)<br>
+[F] = [[2,−1,0],[0,1,−2],[1,−1,−1]]
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     C5C — IMAGEN Y RANGO
+═══════════════════════════════════════════════════════ -->
+<div class="section-panel" id="panel-c5c">
+<div class="sh" style="color:var(--p)">5.6 — Imagen y Rango</div>
+<div class="sh-sub">Definición · Espacio imagen · Rango · Receta completa</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--p)"></div>Definiciones</div>
+<div class="def">
+<strong>Def. 5.6.1 — Imagen:</strong> T(V) = {T(v̄) | v̄ ∈ V} ⊆ W<br><br>
+<strong>Def. 5.6.2 (forma constructiva):</strong> Si β={v̄₁,...,v̄ₙ} es base de V:<br>
+T(V) = SG{T(v̄₁), T(v̄₂), ..., T(v̄ₙ)}<br><br>
+<strong>Def. 5.6.3 — Rango:</strong> r(T) = dim(T(V))
+</div>
+<div class="note">T(V) siempre es subespacio de W (Proposición 5.6.1).</div>
+
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--p)">RECETA: Hallar Im(T) = T(V) y el Rango r(T)</div>
+<div class="recipe-body">
+<ol class="steps">
+  <li>Calcular las imágenes de todos los vectores de la base canónica: T(ē₁),...,T(ēₙ)</li>
+  <li>T(V) = SG{T(ē₁),...,T(ēₙ)}</li>
+  <li>Escalonar la matriz [T(ē₁)|...|T(ēₙ)] para eliminar las combinaciones lineales</li>
+  <li>Las columnas pivote forman una base de T(V)</li>
+  <li>r(T) = número de columnas pivote = número de filas no nulas en la forma escalonada</li>
+  <li>Para encontrar la ecuación de T(V): si quedan filas nulas, la condición es que esa variable es libre</li>
+</ol>
+<div class="ex">
+<div class="ex-title">Ejemplo 5.6.2 del libro — P(x,y,z)=(x,y,0)</div>
+P(1,0,0)=(1,0,0), P(0,1,0)=(0,1,0), P(0,0,1)=(0,0,0)<br>
+T(ℝ³) = SG{(1,0,0),(0,1,0)} = {(x,y,z)|z=0} (plano xy)<br>
+Base: {(1,0,0),(0,1,0)} → r(P) = 2
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     C5D — NÚCLEO Y TEOREMA DIMENSIÓN
+═══════════════════════════════════════════════════════ -->
+<div class="section-panel" id="panel-c5d">
+<div class="sh" style="color:var(--p)">5.7 — Núcleo, Nulidad y Teorema de la Dimensión</div>
+<div class="sh-sub">El teorema más importante del Capítulo 5</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--p)"></div>Definiciones</div>
+<div class="def">
+<strong>Def. 5.7.1 — Núcleo:</strong> N(T) = {v̄ ∈ V | T(v̄) = 0̄} ⊆ V<br><br>
+<strong>Def. 5.7.2 — Nulidad:</strong> n(T) = dim(N(T))
+</div>
+<div class="note">N(T) siempre es subespacio de V = dom(T) (Teorema 5.7.1). El núcleo está en el dominio, la imagen en el codominio.</div>
+
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--p)">RECETA: Hallar N(T) y la nulidad n(T)</div>
+<div class="recipe-body">
+<ol class="steps">
+  <li>Plantear T(v̄) = 0̄ y escribir en forma matricial: [T]·v̄ = 0̄</li>
+  <li>Escalonar la matriz [T] (sistema homogéneo)</li>
+  <li>Expresar las variables dependientes en función de las libres</li>
+  <li>N(T) = SG{vectores que salen de dar valor 1 a cada variable libre}</li>
+  <li>n(T) = número de variables libres</li>
+</ol>
+<div class="ex">
+<div class="ex-title">Ejemplo 5.7.1 — P(x,y,z)=(x,y,0)</div>
+N(P) = {(x,y,z) | (x,y,0)=(0,0,0)} → x=0, y=0, z libre<br>
+N(P) = {(0,0,z) | z∈ℝ} = SG{(0,0,1)} → base β={(0,0,1)} → n(P)=1<br>
+Geométricamente: N(P) es el eje z
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--r)"></div>⭐ TEOREMA 5.7.2 — Teorema de la Dimensión (el más importante)</div>
+<div class="theorem" style="border-color:rgba(255,107,107,0.4); background:rgba(255,107,107,0.06)">
+<div class="theorem-title" style="color:var(--r)">Teorema de la Dimensión</div>
+Para toda TL T: V→W con dim(V) finita:
+<div class="formula" style="color:var(--r); font-size:1rem">dim(dom(T)) = n(T) + r(T)
+= Nulidad + Rango</div>
+</div>
+<div class="tip">Este teorema te permite hallar r(T) si conocés n(T), o viceversa. Siempre verificar que la suma dé dim(V).</div>
+
+<div class="ex">
+<div class="ex-title">Ejemplos del libro (5.7.4)</div>
+G: M₃ₓ₁→M₂ₓ₁, dim(dom)=3, r(G)=2 → n(G)=3−2=1<br>
+H: ℝ²→ℝ², H(x,y)=(x,0), n(H)=1 → r(H)=2−1=1<br>
+J: ℝ³→ℝ³, N(J)={(0,0,0)} → n(J)=0 → r(J)=3 → J(ℝ³)=ℝ³
+</div>
+</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--p)"></div>Proposición 5.7.1 — Condiciones equivalentes</div>
+<div class="theorem">
+<div class="theorem-title">Condiciones equivalentes (T: V→W)</div>
+Las siguientes son todas equivalentes:<br>
+1. N(T) = {0̄}<br>
+2. n(T) = 0<br>
+3. dim(dom(T)) = r(T)<br>
+4. T transforma una base de dom(T) en una base de T(V)
+</div>
+<div class="tip">Si N(T)={0̄} → T es inyectiva. Los vectores LD del dominio tienen imágenes LD.</div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     C5E — ISOMORFISMOS
+═══════════════════════════════════════════════════════ -->
+<div class="section-panel" id="panel-c5e">
+<div class="sh" style="color:var(--p)">5.8 — Isomorfismos</div>
+<div class="sh-sub">Definición · Inyectividad · Sobreyectividad · Teorema 5.8.1</div>
+
+<div class="card">
+<div class="card-title"><div class="ct-dot" style="background:var(--p)"></div>Definición 5.8.1</div>
+<div class="def"><strong>T: V→W es isomorfismo de V sobre T(V)</strong> cuando T es TL y N(T)={0̄}.</div>
+
+<table>
+<tr><th>Propiedad</th><th>Definición</th><th>Condición en T</th></tr>
+<tr><td><strong>Inyectiva</strong></td><td>T(ū)=T(v̄) ⟹ ū=v̄</td><td>N(T) = {0̄}</td></tr>
+<tr><td><strong>Sobreyectiva</strong></td><td>Im(T) = W (llega a todo el codominio)</td><td>r(T) = dim(W)</td></tr>
+<tr><td><strong>Biyectiva</strong></td><td>Inyectiva + Sobreyectiva</td><td>N(T)={0̄} y Im(T)=W</td></tr>
+<tr><td><strong>Isomorfismo</strong></td><td>TL + N(T)={0̄}</td><td>N(T)={0̄}</td></tr>
+</table>
+
+<div class="recipe">
+<div class="recipe-head" style="border-left:3px solid var(--p)">RECETA: Demostrar que T ES isomorfismo</div>
+<div class="recipe-body">
+<ol class="steps">
+  <li>Demostrar que T es TL (condición necesaria base)</li>
+  <li>Hallar N(T) y demostrar que N(T) = {0̄} → T es inyectiva</li>
+  <li>Si dim(V)=dim(W), por el Teorema de la dimensión: r(T)=dim(W) → T sobreyectiva → biyectiva</li>
+  <li>Concluir: T es isomorfismo</li>
+</ol>
+<div class="tip">Atajo: si dim(V)=dim(W) (finitas) y T es TL, basta demostrar UNA de las dos (inyectiva o sobreyectiva) para obtener la otra automáticamente.</div>
+</div>
+</div>
+
+<div class="theorem">
+<div class="theorem-title">Teorema 5.8.1 — El más importante de isomorfismos</div>
+Dos espacios vectoriales son isomorfos ⟺ tienen la misma dimensión.<br>
+En particular: ℝⁿ ≅ Mₙₓ₁ (son isomorfos, ambos tienen dim n).
+</div>
+<div class="tip">Aplicación práctica del Teorema 5.8.1: para saber si V ≅ W simplemente comparar dimensiones.</div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     RECETARIO COMPLETO
+═══════════════════════════════════════════════════════ -->
+<div class="section-panel" id="panel-rec">
+<div class="sh" style="color:var(--r)">🔴 Recetario Completo de Demostraciones</div>
+<div class="sh-sub">Todos los tipos de ejercicios que aparecen en el documento — Referencia rápida para el parcial</div>
+
+<table class="mega-table">
+<tr><th>¿Qué demostrar?</th><th>Método / Pasos clave</th><th>Resultado</th></tr>
+<tr><td>V ES espacio vectorial</td><td>Verificar los 8 axiomas EV1–EV8</td><td><span class="badge bv">Todos cumplen → ES EV</span></td></tr>
+<tr><td>V NO ES espacio vectorial</td><td>Encontrar un axioma que falle. Empezar por EV3: ¿0̄ ∈ V?</td><td><span class="badge bf">1 falla → NO ES EV</span></td></tr>
+<tr><td>S ES subespacio (método SG)</td><td>Expresar S = SG{v̄₁,...,vₚ} → Teorema 3.4.3</td><td><span class="badge bv">ES SEV automáticamente</span></td></tr>
+<tr><td>S ES subespacio (3 condiciones)</td><td>1) 0̄∈S 2) ū+v̄∈S 3) k·ū∈S</td><td><span class="badge bv">3 tesis → ES SEV</span></td></tr>
+<tr><td>S NO ES subespacio</td><td>Contraejemplo: violar una de las 3 tesis (más fácil: verificar 0̄∉S)</td><td><span class="badge bf">1 contraej. → NO ES SEV</span></td></tr>
+<tr><td>Sistema NO homogéneo → SEV?</td><td>Automático: 0̄ no satisface A·X=H si H≠0. Prop. 3.4.2</td><td><span class="badge bf">NUNCA es SEV</span></td></tr>
+<tr><td>Sistema homogéneo → SEV?</td><td>Automático: Proposición 3.4.1</td><td><span class="badge bv">SIEMPRE es SEV</span></td></tr>
+<tr><td>Hallar SG[B]</td><td>Plantear CL = vector genérico, escalonar, extraer condición</td><td>Ecuación del subespacio</td></tr>
+<tr><td>v̄ ES combinación lineal</td><td>Sistema c₁ū₁+...=v̄ → compatible (rg(A)=rg(A*))</td><td><span class="badge bv">Compatible → ES CL</span></td></tr>
+<tr><td>v̄ NO ES CL</td><td>Mismo sistema → incompatible (rg(A)≠rg(A*))</td><td><span class="badge bf">Incompatible → NO ES CL</span></td></tr>
+<tr><td>Conjunto ES LI</td><td>Sistema homogéneo → solo solución trivial (nro.vl=0)</td><td><span class="badge bv">nro.vl=0 → LI</span></td></tr>
+<tr><td>Conjunto ES LD</td><td>Sistema homogéneo → hay variables libres (nro.vl>0)</td><td><span class="badge bf">nro.vl>0 → LD</span></td></tr>
+<tr><td>LD por lema rápido</td><td>0̄ está en el conjunto, O un vector es múltiplo de otro (Lema 3.5.2)</td><td><span class="badge bf">LD por inspección</span></td></tr>
+<tr><td>α ES BASE de V</td><td>α⊂V + LI + SG[α]=V (o atajo: n vectores LI en ℝⁿ)</td><td><span class="badge bv">3 condiciones → ES BASE</span></td></tr>
+<tr><td>Hallar coordenadas (base normal)</td><td>Resolver sistema k₁v̄₁+...+kₙv̄ₙ=ū</td><td>(ū)α=(k₁,...,kₙ)</td></tr>
+<tr><td>Hallar coordenadas (base ortonormal)</td><td>cᵢ = ⟨ū,v̄ᵢ⟩ directamente (Teorema 4.4.1)</td><td>(ū)β=(⟨ū,v̄₁⟩,...,⟨ū,v̄ₙ⟩)</td></tr>
+<tr><td>Cambio de base</td><td>Hallar MP (columnas=[ūᵢ]β) → [w̄]β=MP·[w̄]α</td><td>Teo. 3.5.5</td></tr>
+<tr><td>Hallar norma ‖ū‖ₚ</td><td>Usar fórmula según p: 1 (suma abs), 2 (raíz sum cuad), ∞ (max abs)</td><td>Número real ≥0</td></tr>
+<tr><td>ū y v̄ son ortogonales</td><td>Calcular ⟨ū,v̄⟩. Si =0 → ortogonales</td><td><span class="badge bv">⟨ū,v̄⟩=0 → ⊥</span></td></tr>
+<tr><td>β es base ortonormal</td><td>Todos ⟨v̄ᵢ,v̄ⱼ⟩=0 (i≠j) + todos ‖v̄ᵢ‖=1 + β⊂V + |β|=dim(V)</td><td><span class="badge bv">→ Base ortonormal</span></td></tr>
+<tr><td>Proceso Gram-Schmidt</td><td>w̄ᵢ=ūᵢ−Σ⟨ūᵢ,v̄ₖ⟩v̄ₖ → v̄ᵢ=w̄ᵢ/‖w̄ᵢ‖</td><td>Base ortonormal</td></tr>
+<tr><td>T ES transformación lineal</td><td>T(ū+hv̄)=T(ū)+h·T(v̄) para todo ū,v̄,h</td><td><span class="badge bv">Igualdad → ES TL</span></td></tr>
+<tr><td>T NO ES TL</td><td>T(0̄)≠0̄ (más rápido), o contraejemplo aditividad/homog.</td><td><span class="badge bf">1 falla → NO es TL</span></td></tr>
+<tr><td>Hallar [T] (matriz asociada)</td><td>Columnas = T(ē₁), T(ē₂), ..., T(ēₙ)</td><td>Teo. 5.4.1</td></tr>
+<tr><td>Hallar Im(T) y r(T)</td><td>SG{T(ē₁),...,T(ēₙ)}, escalonar, contar pivotes</td><td>r(T)=pivotes</td></tr>
+<tr><td>Hallar N(T) y n(T)</td><td>[T]·v̄=0̄, escalonar, variables libres</td><td>n(T)=var. libres</td></tr>
+<tr><td>Verificar Teo. Dimensión</td><td>Calcular n(T)+r(T) y verificar = dim(V)</td><td>Teo. 5.7.2</td></tr>
+<tr><td>T ES inyectiva</td><td>Demostrar N(T)={0̄} equivalentemente n(T)=0</td><td><span class="badge bv">N(T)={0̄} → Inyectiva</span></td></tr>
+<tr><td>T ES sobreyectiva</td><td>Demostrar Im(T)=W, i.e. r(T)=dim(W)</td><td><span class="badge bv">Im(T)=W → Sobrey.</span></td></tr>
+<tr><td>T ES isomorfismo</td><td>TL + N(T)={0̄} (inyectiva)</td><td><span class="badge bv">→ Isomorfismo</span></td></tr>
+<tr><td>V ≅ W (isomorfos)</td><td>Verificar dim(V)=dim(W) (Teo. 5.8.1)</td><td><span class="badge bv">Misma dim → Isomorfos</span></td></tr>
+<tr><td>Producto vectorial ū×v̄</td><td>det [ē₁,ē₂,ē₃; u₁,u₂,u₃; v₁,v₂,v₃]</td><td>Vector ⊥ a ū y v̄</td></tr>
+<tr><td>ū ∥ v̄ (paralelos)</td><td>Calcular ū×v̄. Si =0̄ → paralelos (Prop. 4.5.2)</td><td><span class="badge bv">ū×v̄=0̄ → paralelos</span></td></tr>
+<tr><td>Área paralelogramo (ℝ²)</td><td>|det[u₁,u₂; v₁,v₂]|</td><td>Número ≥ 0</td></tr>
+<tr><td>Volumen paralelepípedo (ℝ³)</td><td>|det[ū; v̄; w̄]| = |⟨ū×v̄,w̄⟩|</td><td>Número ≥ 0</td></tr>
+<tr><td>3 vectores coplanares</td><td>Calcular prod. mixto. Si =0 → coplanares (Prop. 4.6.1)</td><td><span class="badge by">Prod. mixto = 0 → cop.</span></td></tr>
+</table>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     MEMORIA RÁPIDA
+═══════════════════════════════════════════════════════ -->
+<div class="section-panel" id="panel-mem">
+<div class="sh" style="color:var(--y)">🟡 Tarjetas de Memoria Rápida</div>
+<div class="sh-sub">Conceptos clave para no olvidar en el parcial · Errores más comunes</div>
+
+<h2 style="color:var(--y)">Tarjetas: Preguntas y Respuestas</h2>
+
+<div class="mc"><div class="mc-q">¿Cuándo algo NO es subespacio? Forma más rápida.</div><div class="mc-a">Cuando el 0̄ no está. Sustituir (0,0,...,0) en la condición del conjunto. Si no la cumple → NO es SEV. Ejemplo: {(x,y) | x+y=1} → (0,0): 0+0=0≠1 → NO.</div></div>
+
+<div class="mc"><div class="mc-q">¿Diferencia entre N(T) e Im(T)?</div><div class="mc-a">N(T) = núcleo = está en el DOMINIO V = los vectores que T manda a 0̄. Im(T) = imagen = está en el CODOMINIO W = todos los resultados posibles de T.</div></div>
+
+<div class="mc"><div class="mc-q">Teorema Dimensión: T:ℝ⁵→ℝ³ y n(T)=2. ¿Cuánto vale r(T)? ¿Es sobreyectiva?</div><div class="mc-a">dim(V) = r(T)+n(T) → 5 = r(T)+2 → r(T)=3. Como dim(ℝ³)=3 y r(T)=3 → Im(T)=ℝ³ → SÍ es sobreyectiva.</div></div>
+
+<div class="mc"><div class="mc-q">¿Un sistema no homogéneo puede ser subespacio?</div><div class="mc-a">NUNCA. Si hay un término independiente h≠0, el vector (0,...,0) no satisface la ecuación, entonces 0̄ no está en el conjunto → no es subespacio. Proposición 3.4.2.</div></div>
+
+<div class="mc"><div class="mc-q">Tengo p vectores en ℝⁿ con p>n. ¿Qué concluyo sin calcular?</div><div class="mc-a">Automáticamente son LD (Teorema 3.5.2). No pueden ser base. No hace falta plantear el sistema.</div></div>
+
+<div class="mc"><div class="mc-q">Tengo k vectores LI en un SEV S con dim(S)=k. ¿Son base de S?</div><div class="mc-a">Sí automáticamente (Proposición 3.5.2, ítem 2). Si los vectores también pertenecen a S → ya es base. No hace falta verificar generación.</div></div>
+
+<div class="mc"><div class="mc-q">¿T(0̄)=0̄ implica que T es TL?</div><div class="mc-a">NO. T(0̄)=0̄ es condición NECESARIA pero no SUFICIENTE. Si T(0̄)≠0̄ → definitivamente NO es TL. Pero T(0̄)=0̄ no me asegura nada.</div></div>
+
+<div class="mc"><div class="mc-q">¿Cómo verifico que β es base ortonormal para un subespacio A ⊂ ℝⁿ?</div><div class="mc-a">1) Verificar que v̄ᵢ ∈ A (satisfacen la ecuación de A). 2) ⟨v̄ᵢ,v̄ⱼ⟩=0 para i≠j (ortogonal). 3) ‖v̄ᵢ‖=1 (unitarios). 4) |β|=dim(A). Listo.</div></div>
+
+<div class="mc"><div class="mc-q">Si T:V→W con dim(V)=dim(W) finita y T es TL, ¿qué basta demostrar para que sea isomorfismo?</div><div class="mc-a">Basta demostrar una sola: o N(T)={0̄} (inyectiva) o Im(T)=W (sobreyectiva). Ambas se implican mutuamente cuando las dimensiones son iguales.</div></div>
+
+<div class="mc"><div class="mc-q">¿Cuándo dos EV son isomorfos? ¿Cómo verificarlo?</div><div class="mc-a">Son isomorfos ⟺ dim(V) = dim(W). Solo comparar dimensiones (Teorema 5.8.1).</div></div>
+
+<div class="mc"><div class="mc-q">¿El conjunto {0̄, v̄₁, v̄₂} puede ser LI?</div><div class="mc-a">NUNCA. Por Lema 3.5.2: si 0̄ está en el conjunto → automáticamente LD. No importa quiénes sean v̄₁ y v̄₂.</div></div>
+
+<div class="mc"><div class="mc-q">Gram-Schmidt: cuando paro el proceso y qué significa.</div><div class="mc-a">Si en algún paso w̄ᵢ = 0̄, el proceso para. Significa que los vectores originales eran LD y no formaban una base → no se puede construir la base ortonormal a partir de ellos.</div></div>
+
+<hr>
+<h2 style="color:var(--r)">⚠️ Errores Más Comunes en el Parcial</h2>
+
+<div class="alert">Olvidar el paso de <strong>VERIFICACIÓN</strong> en Combinación Lineal: sustituir los cᵢ hallados y confirmar que da v̄. Ese paso suele tener puntos propios.</div>
+<div class="alert">En la demostración de subespacio: arrancar directo con las 3 condiciones sin primero reescribir los elementos del conjunto en forma explícita (ese rewrite es el paso 1).</div>
+<div class="alert">Confundir N(T) con Im(T): el núcleo está en el DOMINIO, la imagen en el CODOMINIO.</div>
+<div class="alert">Gram-Schmidt: hacer todos los pasos perfectos pero olvidarse de <strong>unitarizar</strong> al final (‖w̄ᵢ‖ se calcula y se divide). Si el parcial pide base ortonormal hay que unitarizar.</div>
+<div class="alert">Calcular las normas respecto a la base equivocada. ‖ū‖₂ con base canónica = √(Σxᵢ²). Con otra base β = √(Σcᵢ²) donde cᵢ son las coordenadas en β.</div>
+<div class="alert">Concluir que T es isomorfismo solo porque dim(V)=dim(W). También hay que demostrar que T ES TL y que N(T)={0̄}.</div>
+<div class="alert">Coordenadas con base ortonormal: el atajo cᵢ=⟨ū,v̄ᵢ⟩ SOLO vale si la base es ortonormal. Con base normal hay que resolver el sistema.</div>
+<div class="alert">Producto vectorial: es anticonmutativo → ū×v̄ = −(v̄×ū). No confundir el orden.</div>
+</div>
+
+</div><!-- /content -->
+</div><!-- /main -->
+</div><!-- /shell -->
 
 <script>
-// ─── WHATSAPP CON TRACKING META PIXEL ────────────────────────────────────────
-// Mensaje exacto solicitado
-var WA_NUM = '5492644116786';
-var WA_MSG = 'Hola! Quiero inscribirme al curso de reparación de computadoras. ';
-
-function irWhatsApp(e) {
-  if (e) e.preventDefault();
-
-  // Disparar evento InitiateCheckout en Meta Pixel (evento de conversión limpio)
-  if (typeof fbq !== 'undefined') {
-    fbq('track', 'InitiateCheckout', {
-      content_name: 'Curso Reparacion PC',
-      value: 9900,
-      currency: 'ARS',
-      num_items: 1
-    });
-  }
-
-  // Abrir WhatsApp con mensaje predeterminado
-  var url = 'https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(WA_MSG);
-  window.open(url, '_blank', 'noopener');
+const all = ['c3','c3b','c3c','c3d','c3e','c4a','c4b','c4c','c5a','c5b','c5c','c5d','c5e','rec','mem'];
+function showTab(id, color) {
+  all.forEach(t => {
+    document.getElementById('panel-'+t).classList.remove('visible');
+    const btn = document.getElementById('tab-'+t);
+    if(btn) { btn.className = 'tab-btn'; }
+    const nav = document.querySelector(`.nav-item[onclick*="'${t}'"]`);
+    if(nav) nav.classList.remove('active');
+  });
+  document.getElementById('panel-'+id).classList.add('visible');
+  const activeBtn = document.getElementById('tab-'+id);
+  if(activeBtn) activeBtn.classList.add('active-'+(color||'g'));
+  const activeNav = document.querySelector(`.nav-item[onclick*="'${id}'"]`);
+  if(activeNav) activeNav.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
 }
-
-// ─── COUNTDOWN TIMER ──────────────────────────────────────────────────────────
-// Persiste entre recargas usando localStorage (24h desde primer acceso)
-(function() {
-  var KEY = 'curso_pc_deadline';
-  var stored = localStorage.getItem(KEY);
-  var deadline;
-
-  if (stored) {
-    deadline = parseInt(stored, 10);
-  } else {
-    // 24 horas desde ahora
-    deadline = Date.now() + 24 * 60 * 60 * 1000;
-    localStorage.setItem(KEY, deadline);
-  }
-
-  function update() {
-    var remaining = deadline - Date.now();
-    if (remaining <= 0) {
-      document.getElementById('countdown').textContent = '¡Oferta vencida!';
-      return;
-    }
-    var h = Math.floor(remaining / 3600000);
-    var m = Math.floor((remaining % 3600000) / 60000);
-    var s = Math.floor((remaining % 60000) / 1000);
-    document.getElementById('countdown').textContent =
-      String(h).padStart(2,'0') + ':' +
-      String(m).padStart(2,'0') + ':' +
-      String(s).padStart(2,'0');
-    setTimeout(update, 1000);
-  }
-  update();
-})();
 </script>
-
 </body>
 </html>
